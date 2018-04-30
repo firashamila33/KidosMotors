@@ -5,9 +5,9 @@ The project challenge is to extend my FrontEnd experience facing the latest tren
 Built with:
 
 Node.js v8.9
-React v16
-Redux
-Express
-Babel
-WebPack 5
-MongoDB
+,React v16
+,Redux
+,Express
+,Babel
+,WebPack 5
+,MongoDB
