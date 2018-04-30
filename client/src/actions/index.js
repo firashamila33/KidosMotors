@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_USER, FETCH_SURVEYS ,LOCATION ,FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD} from "./types";
+import { FETCH_USER, FETCH_SURVEYS ,LOCATION ,FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM} from "./types";
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get("/api/current_user");
@@ -50,6 +50,14 @@ export function addToBasket(product){
   return(
     {type: BASKET_ADD,
       payload : product
+    }
+  ); 
+}
+
+export function removeFromBasket(id){
+  return(
+    {type: BASKET_REMOVE_ITEM,
+      payload : id
     }
   ); 
 }

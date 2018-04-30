@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { removeFromBasket } from '../actions';
 
 import BasketItem from './BasketItem';
 
@@ -61,4 +62,4 @@ function mapStateToProps({ basketproducts }) {
   return { basketproducts };
 }
 
-export default connect(mapStateToProps)(Basket);
+export default connect(mapStateToProps,{removeFromBasket})(Basket);

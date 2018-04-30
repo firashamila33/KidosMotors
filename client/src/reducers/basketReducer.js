@@ -1,4 +1,4 @@
-import { BASKET_ADD } from '../actions/types';
+import { BASKET_ADD ,BASKET_REMOVE_ITEM} from '../actions/types';
 
 export default function(state = [], action) {
   
@@ -20,17 +20,16 @@ export default function(state = [], action) {
                     return e.product._id!==product._id ;
                 });
             currentQuentity++;
-            //console.log('____');
-            //console.log({product,quantity:currentQuentity},...state);
-            //console.log('____');
             return([{product,quantity:currentQuentity},...state]);
         }else{
-            //console.log('****');
-            //console.log({product,quantity:1},...state);
-            //console.log('****');
             return([{product,quantity:1},...state]);            
         }
-
+    case BASKET_REMOVE_ITEM:
+        state=state.filter(function(item){
+            return item.product._id!==action.payload ;
+        });
+        return state;
+        
     default:
       return state;
   }
