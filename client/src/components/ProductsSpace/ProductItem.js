@@ -1,7 +1,7 @@
 import React,{Component} from 'react' ;
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addToBasket } from '../actions';
+import { addToBasket } from '../../actions';
 
 
 class ProductItem extends Component{

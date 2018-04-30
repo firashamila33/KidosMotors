@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from "react-redux";
+import { removeFromBasket } from '../actions';
+
 
 
 
@@ -48,7 +50,7 @@ class  CartFull extends Component {
           </p>
         </div>
         <div className="col-sm-1 col-md-1 col-lg-1 cart-item">
-          <i className="fa fa-remove cart-remove-btn" />
+          <i className="fa fa-remove cart-remove-btn" onClick={()=>this.props.removeFromBasket(item.product._id)}/>
         </div>
       </div>
       );
@@ -90,9 +92,9 @@ class  CartFull extends Component {
           <a href=" " className="ht-btn ht-btn-default pull-right">
             Proceed to check out
           </a>
-          <a href=" " className="ht-btn ht-btn-default pull-left">
+          {/* <a href=" " className="ht-btn ht-btn-default pull-left">
             Update cart
-          </a>
+          </a> */}
         </div>
       </div>
     </section>
@@ -105,5 +107,5 @@ function mapStateToProps({ basketproducts }) {
   return { basketproducts };
 }
 
-export default connect(mapStateToProps)(CartFull);
+export default connect(mapStateToProps,{removeFromBasket})(CartFull);
 

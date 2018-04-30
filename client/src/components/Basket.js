@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { removeFromBasket } from '../actions';
 
 import BasketItem from './BasketItem';
 
@@ -47,7 +46,9 @@ class Basket extends Component {
               Total : <strong className="pull-right price">${this.getTotalPrice()} </strong>
             </div>
             <div className="clearfix" />
-            <a className="ht-btn">Check out</a>
+            {/* <Link to={"/products_cart"} className="ht-btn">
+              Check out
+            </Link> */}
             <Link to={"/products_cart"} className="ht-btn pull-right">
               View Cart
             </Link>
@@ -62,4 +63,4 @@ function mapStateToProps({ basketproducts }) {
   return { basketproducts };
 }
 
-export default connect(mapStateToProps,{removeFromBasket})(Basket);
+export default connect(mapStateToProps)(Basket);

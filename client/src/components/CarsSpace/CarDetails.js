@@ -1,6 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchProduct } from '../actions';
+import { fetchProduct } from '../../actions';
+import { Link } from 'react-router-dom';
+
+const btnStyle={
+    lineheight: '12px',
+    width: '18px',
+    fontsize: '8pt',
+    fontfamily: 'tahoma',
+    margintop: '1px',
+    marginright: '2px',
+    position:'absolute',
+    top:0,
+    right:0
+}
 
 class ProductDetails extends React.Component {
     componentDidMount(){
@@ -9,7 +22,11 @@ class ProductDetails extends React.Component {
     render(){
         return (
             <div className="col-sm-8 col-md-9 col-lg-9">
+                <Link to={"/products"} style={{width:25}} className="col-sm-1 col-md-1 col-lg-1 p-lg-0 ht-btn ht-btn-default pull-right">
+                    <i  style={{marginLeft:7}} className="fa fa-remove center"/>
+                </Link> 
                 <div className="product-list product_detail p-lg-30 p-xs-15 bg-gray-fa bg1-gray-15 m-b-lg-50">
+                
                         <div className="row">
                             <div className="image-zoom col-md-6 col-lg-6">
                                 <div className="product-img-lg p-lg-10 m-b-xs-30 text-center">
@@ -18,6 +35,7 @@ class ProductDetails extends React.Component {
                                     </a>
                                 </div>
                             </div>
+                            
                             <div className="col-md-6 col-lg-6">
                                 <h3 className="product-name">{this.props.selectedProduct.name}</h3>
                                 <div className="product_para">

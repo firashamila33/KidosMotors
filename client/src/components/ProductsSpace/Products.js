@@ -1,23 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../actions';
+import { fetchProducts } from '../../actions';
 
 import ProductItem from './ProductItem';
-
-class ProductsList extends React.Component{
+import ProductsList from './ProductsList';
+ 
+class Products extends React.Component{
     constructor(state){
         super(state);
-        this.renderProduct=this.renderProduct.bind(this);
+        
     }
 
     componentDidMount() {
         this.props.fetchProducts();
-      }
-
-    renderProduct(product){
-            return(
-                <ProductItem key={product.name} product={product} />
-            );
     }
     render(){
         return(
@@ -77,7 +72,7 @@ class ProductsList extends React.Component{
               </div>
               <div className="clearfix" />
               <div className="row">    
-                {this.props.products.map(product=>this.renderProduct(product))}
+                <ProductsList productslist={this.props.products}/>
               </div>
               <nav aria-label="Page navigation">
                 <ul className="pagination ht-pagination">
@@ -122,4 +117,4 @@ function mapStateToProps({ products }) {
     return { products };
 }
   
-export default connect(mapStateToProps,{fetchProducts})(ProductsList);
+export default connect(mapStateToProps,{fetchProducts})(Products);

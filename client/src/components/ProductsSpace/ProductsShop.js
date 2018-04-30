@@ -1,9 +1,9 @@
 import React , {Component} from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
-import ProductsList from './ProductList';
+import Products from './Products';
 import ProductDetails from './ProductDetails';
 
-class Products extends Component{
+class ProductsShop extends Component{
 
     
 
@@ -53,7 +53,7 @@ class Products extends Component{
                             </div>
                             <BrowserRouter>
                                     <div>
-                                    <Route exact path="/products" component={ProductsList} />
+                                    <Route exact path="/products" component={Products} />
                                     <Route exact path="/product/:id" component={ProductDetails} />
                                     </div>
                             </BrowserRouter>
@@ -65,4 +65,4 @@ class Products extends Component{
     }
 }   
 
-export default Products;
+export default ProductsShop;
