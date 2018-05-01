@@ -62,8 +62,6 @@ class ProductItem extends Component{
 
 };
 
-function mapStateToProps({ basketproducts }) {
-    return { basketproducts };
-}
 
-export default connect(mapStateToProps,{addToBasket})(ProductItem) ;
+
+export default connect(null,{addToBasket})(ProductItem) ;

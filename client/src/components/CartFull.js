@@ -12,11 +12,7 @@ class  CartFull extends Component {
     this.state = { basketproducts: {} };
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log("i am in bascketoo");
-    console.log(nextProps.basketproducts);
-    this.setState({ basketproducts: nextProps.basketproducts });
-  }
+ 
 
   renderItem(item){
     return(

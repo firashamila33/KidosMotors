@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_USER, FETCH_SURVEYS ,LOCATION ,FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS} from "./types";
+import { FETCH_USER, FETCH_SURVEYS ,LOCATION ,FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS, FETCH_SINGLE_CAR} from "./types";
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get("/api/current_user");
@@ -35,6 +35,9 @@ export const fetchPath = () =>async dispatch =>{
   dispatch({type: LOCATION,payload :res});
 }
 
+
+
+
 export const fetchProducts = () =>async dispatch =>{
   const res = await axios.get("/api/products");
   dispatch({type: FETCH_PRODUCTS,payload :res.data});
@@ -65,4 +68,9 @@ export function removeFromBasket(id){
 export const fetchCars = () =>async dispatch =>{
   const res = await axios.get("/api/cars");
   dispatch({type: FETCH_CARS,payload :res.data});
+}
+
+export const fetchCar = (id) =>async dispatch =>{
+  const res = await axios.get(`/api/car/:${id}`);
+  dispatch({type: FETCH_SINGLE_CAR,payload :res.data});
 }

@@ -10,13 +10,6 @@ class Basket extends Component {
     super(props);
     this.state = { basketproducts: {} };
   }
-
-  componentWillReceiveProps(nextProps) {
-    console.log("i am in bascket");
-    console.log(nextProps.basketproducts);
-    this.setState({ basketproducts: nextProps.basketproducts });
-  }
-
   renderItem(item) {
      return(
         <BasketItem key={item.product._id} item={item}/>

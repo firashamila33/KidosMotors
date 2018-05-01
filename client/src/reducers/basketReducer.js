@@ -14,7 +14,6 @@ export default function(state = [], action) {
                 exist= true;
             }
         });
-        
         if(exist){
             state=state.filter(function(e){
                     return e.product._id!==product._id ;

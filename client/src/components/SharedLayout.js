@@ -9,7 +9,7 @@ class SharedLayout extends Component{
 
   renderSearchBar(){
     const path=window.location.href.split('/')[3];
-    if(path==='home'){
+    if(path==='home' || path===''){
       return  (
         <div>
           <section className="block-sl">
@@ -153,8 +153,6 @@ class SharedLayout extends Component{
           </div>
         </div>
       );
-    }else{
-      return("");
     }
   }
 

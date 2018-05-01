@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchCars } from '../../actions';
 
-import CarDetails from './CarDetails';
+
 import CarList from './CarsList';
 
 class CarShop extends Component{
@@ -205,6 +205,7 @@ class CarShop extends Component{
                                 </div> */}
                                 
                                 <CarList carslist={this.props.cars}/>
+                                
                             </div>
                             <nav aria-label="Page navigation">
                                 <ul className="pagination ht-pagination">

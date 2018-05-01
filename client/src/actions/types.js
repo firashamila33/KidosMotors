@@ -6,3 +6,4 @@ export const FETCH_SINGLE_PRODUCTS = 'fetch_single__products';
 export const BASKET_ADD= 'basket_add';
 export const BASKET_REMOVE_ITEM='basket_remove_item';
 export const FETCH_CARS='fetch_cars';
+export const FETCH_SINGLE_CAR='fetch_single_car';

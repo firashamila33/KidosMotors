@@ -11,6 +11,7 @@ import ProductsShop from "./ProductsSpace/ProductsShop";
 import SellA_Car from "./sellA_Car"
 import ContactUs from "./contactUs"
 import CartFull from "./CartFull";
+import CarDetails from './CarsSpace/CarDetails';
 
 
 
@@ -23,16 +24,18 @@ class App extends Component {
   render() {
     return (
          <BrowserRouter >
-         <SharedLayout>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/cars" component={CarShop} />
-                <Route exact path="/home" component={Home} />
-                <Route exact path="/products" component={ProductsShop} />
-                <Route exact path="/sellacar" component={SellA_Car} />
-                <Route exact path="/contactus" component={ContactUs} />
-                <Route exact path="/products_cart" component={CartFull} />
-                <Route exact path="/product/:id"  component={ProductsShop} />
-          </SharedLayout>
+            <SharedLayout>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/home" component={Home} />
+                    <Route exact path="/products" component={ProductsShop} />
+                    <Route exact path="/product/:id"  component={ProductsShop} />
+                    <Route exact path="/cars" component={CarShop} />
+                    <Route exact path="/carso" component={CarDetails} />                    
+                    <Route exact path="/sellacar" component={SellA_Car} />
+                    <Route exact path="/contactus" component={ContactUs} />
+                    <Route exact path="/products_cart" component={CartFull} />
+
+              </SharedLayout>
          </BrowserRouter>
       
  

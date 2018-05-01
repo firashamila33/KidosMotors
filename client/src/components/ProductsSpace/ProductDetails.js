@@ -26,7 +26,6 @@ class ProductDetails extends React.Component {
                     <i  style={{marginLeft:7}} className="fa fa-remove center"/>
                 </Link> 
                 <div className="product-list product_detail p-lg-30 p-xs-15 bg-gray-fa bg1-gray-15 m-b-lg-50">
-                
                         <div className="row">
                             <div className="image-zoom col-md-6 col-lg-6">
                                 <div className="product-img-lg p-lg-10 m-b-xs-30 text-center">
@@ -34,8 +33,7 @@ class ProductDetails extends React.Component {
                                         <img src={`../${this.props.selectedProduct.imagePath}`} alt="" />
                                     </a>
                                 </div>
-                            </div>
-                            
+                            </div>            
                             <div className="col-md-6 col-lg-6">
                                 <h3 className="product-name">{this.props.selectedProduct.name}</h3>
                                 <div className="product_para">

@@ -5,10 +5,7 @@ module.exports = app => {
     res.send(fetchedProducts);
   });
 
-  app.get('/api/product/:id',(req, res) => {
-    console.log('yeeees i am in server');
-    console.log(req.url.split(':')[1]);
-    fetchedProducts.map.filter
+  app.get('/api/product/:id',(req, res) => {    
     res.send(
       fetchedProducts.filter((product)=>product._id==req.url.split(':')[1])[0]
     );
