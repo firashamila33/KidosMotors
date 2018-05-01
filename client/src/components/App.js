@@ -16,9 +16,7 @@ import CartFull from "./CartFull";
 
 
 class App extends Component {
-  componentDidMount() {
-    this.props.fetchUser();
-  }
+
 
   render() {
     return (
