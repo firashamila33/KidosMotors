@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchCar } from '../../actions';
-import { Link } from 'react-router-dom';
 
 class CarDetails extends React.Component {
     componentDidMount(){
@@ -14,14 +13,14 @@ class CarDetails extends React.Component {
 							<div className="row">
 								<div className="col-lg-6">
 									<ul className="ht-breadcrumb pull-left">
-									<li className="home-act"><a href="#"><i className="fa fa-home"></i></a></li>
-									<li className="home-act"><a href="#">Product</a></li>
-									<li className="home-act"><a href="#">Tyres & Wheels</a></li>
+									<li className="home-act"><a href=""><i className="fa fa-home"></i></a></li>
+									<li className="home-act"><a href="">Product</a></li>
+									<li className="home-act"><a href="">Tyres & Wheels</a></li>
 									<li className="active">360 FORGED® - MESH 8</li>
 									</ul>
 								</div>
 								<div className="col-lg-6">
-									<a href="#" className="ht-btn ht-btn-default pull-right m-t-lg-0"><i className="fa fa-upload"></i>Upload your Vehicle</a>
+									<a href="" className="ht-btn ht-btn-default pull-right m-t-lg-0"><i className="fa fa-upload"></i>Upload your Vehicle</a>
 								</div>
 							</div>
 						</div>
@@ -153,10 +152,10 @@ class CarDetails extends React.Component {
 									<div className="heading-1">
 										<h3><i className="fa fa-info-circle"></i>Dealer Infomation</h3>
 									</div>
-									<a href="#" className="bg-gray-fa bg1-gray-2 p-lg-15 text-center m-b-lg-20 display-block">
+									<a href="" className="bg-gray-fa bg1-gray-2 p-lg-15 text-center m-b-lg-20 display-block">
 										<img src="../images/logo_w.png" alt=""/>
 									</a>
-									<h4 className="p-t-lg-0"><a href="#">UK car supermarket</a></h4>
+									<h4 className="p-t-lg-0"><a href="">UK car supermarket</a></h4>
 									<div className="clearfix"></div>
 									<ul className="list-default m-t-lg-0">
 										<li><i className="fa fa-user-circle-o m-r-lg-10  icon"></i>Mr. Janhn</li>
@@ -195,12 +194,12 @@ class CarDetails extends React.Component {
 								<div className="row">
 									<div className="col-sm-12 col-md-6 col-lg-4">
 										<div className="product-item hover-img">
-											<a href="#" className="product-img">
+											<a href="" className="product-img">
 												<img src="../images/b-img-13.jpg" alt=""/>
 											</a>	
 											<div className="product-caption">
 												<h4 className="product-name">
-													<a href="#">HYUNDAI ELANTRA 2016 NEW MODEL / <b>New</b></a><span className="f-18"> $201,000</span>
+													<a href="">HYUNDAI ELANTRA 2016 NEW MODEL / <b>New</b></a><span className="f-18"> $201,000</span>
 												</h4>
 											</div>
 											<ul className="absolute-caption">
@@ -212,12 +211,12 @@ class CarDetails extends React.Component {
 									</div>
 									<div className="col-sm-12 col-md-6 col-lg-4">
 										<div className="product-item hover-img">
-											<a href="#" className="product-img">
+											<a href="" className="product-img">
 												<img src="../images/b-img-1.jpg" alt=""/>
 											</a>	
 											<div className="product-caption">
 												<h4 className="product-name">
-													<a href="#">HYUNDAI ELANTRA 2016 NEW MODEL / <b>New</b></a><span className="f-18"> $201,000</span>
+													<a href="">HYUNDAI ELANTRA 2016 NEW MODEL / <b>New</b></a><span className="f-18"> $201,000</span>
 												</h4>
 											</div>
 											<ul className="absolute-caption">
@@ -229,12 +228,12 @@ class CarDetails extends React.Component {
 									</div>
 									<div className="col-sm-12 col-md-6 col-lg-4">
 										<div className="product-item hover-img">
-											<a href="#" className="product-img">
+											<a href="" className="product-img">
 												<img src="../images/b-img-2.jpg" alt=""/>
 											</a>	
 											<div className="product-caption">
 												<h4 className="product-name">
-													<a href="#">HYUNDAI ELANTRA 2016 NEW MODEL / <b>New</b></a><span className="f-18"> $201,000</span>
+													<a href="">HYUNDAI ELANTRA 2016 NEW MODEL / <b>New</b></a><span className="f-18"> $201,000</span>
 												</h4>
 											</div>
 											<ul className="absolute-caption">

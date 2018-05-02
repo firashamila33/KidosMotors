@@ -22,8 +22,7 @@ class ProductsShop extends Component{
 
     renderFiltredProducts(activePage){
         this.setState({activePage});
-        this.props.fetchProducts(activePage);
-
+        this.filterProducts(activePage);
     }
     
     

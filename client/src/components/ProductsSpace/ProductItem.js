@@ -10,7 +10,7 @@ class ProductItem extends Component{
             <div className="col-sm-6 col-md-4 col-lg-4">
                 <div className="product-item hover-img">
                     <a href="product_detail.html" className="product-img">
-                        <img src={this.props.product.imagePath} alt="" />
+                        <img src={`${process.env.PUBLIC_URL}/images/${this.props.product.imageName}`} style={{width:'197.5px',height:'197.5px'}}alt="" />
                     </a>
                     <div className="product-caption">
                         <h4 className="product-name">
@@ -36,14 +36,16 @@ class ProductItem extends Component{
                         <div className="product-price-group">
                         <span className="product-price">${this.props.product.price}</span>
                         </div>
-                        <a className="ht-btn ht-btn-default">Add to cart</a>
+                        <a className="ht-btn ht-btn-default" onClick={()=>{
+                                    this.props.addToBasket(this.props.product,1);
+                                    }} >Add to cart</a>
                         <ul className="absolute-caption">
                         <li>
                             <i className="fa fa-heart-o" />
                         </li>
                         <li>
                             <i className="fa fa-shopping-basket" onClick={()=>{
-                                    this.props.addToBasket(this.props.product);
+                                    this.props.addToBasket(this.props.product,1);
                                     }}/>
                         </li>
                         <li>

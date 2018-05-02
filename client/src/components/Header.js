@@ -50,7 +50,7 @@ class Header extends  Component{
                     <div className="row">
                     <div className="col-md-3 col-lg-3">
                         <a className="logo">
-                        <img src={require('../images/logo.png')} alt="logo" />
+                        <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="logo" />
                         </a>
                     </div>
                     <div className="col-md-9 col-lg-9">

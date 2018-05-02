@@ -2,21 +2,20 @@ import React,{Component} from 'react';
 import ProductItem from './ProductItem';
 
 
-class ProductList extends Component{
-
-    renderProduct(product){
-        return(
-            <ProductItem key={product.name} product={product} />
-        );
+function renderProduct(product){
+    return(
+        <ProductItem key={product.name} product={product} />
+    );
 }
 
-    render(){
+const ProductList = (props)=>{
+    
         return(
             <div>
-            {this.props.productslist.map(product=>this.renderProduct(product))}
+            {props.productslist.map(product=>renderProduct(product))}
             </div>
     );
-    }
+    
 
 }
 

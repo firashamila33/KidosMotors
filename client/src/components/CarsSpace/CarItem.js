@@ -1,5 +1,4 @@
 import React,{Component} from 'react' ;
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToBasket } from '../../actions';
 
@@ -10,7 +9,7 @@ class CartItem extends Component{
             <div className="col-sm-12 col-md-6 col-lg-6">
                 <div className="product-item hover-img">
                     <a className="product-img">
-                        <img src={this.props.car.imagePath} alt="" />
+                        <img src={`${process.env.PUBLIC_URL}/images/${this.props.car.imageName}`} alt="" />
                     </a>
                     <div className="product-caption">
                         <h4 className="product-name">

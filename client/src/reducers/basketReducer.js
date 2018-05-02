@@ -18,10 +18,10 @@ export default function(state = [], action) {
             state=state.filter(function(e){
                     return e.product._id!==product._id ;
                 });
-            currentQuentity++;
+            currentQuentity+=action.quantity;
             return([{product,quantity:currentQuentity},...state]);
         }else{
-            return([{product,quantity:1},...state]);            
+            return([{product,quantity:action.quantity},...state]);            
         }
     case BASKET_REMOVE_ITEM:
         state=state.filter(function(item){

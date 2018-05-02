@@ -1,19 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchProduct } from '../../actions';
+import { fetchProduct ,addToBasket } from '../../actions';
 import { Link } from 'react-router-dom';
 
-const btnStyle={
-    lineheight: '12px',
-    width: '18px',
-    fontsize: '8pt',
-    fontfamily: 'tahoma',
-    margintop: '1px',
-    marginright: '2px',
-    position:'absolute',
-    top:0,
-    right:0
-}
+
 
 class ProductDetails extends React.Component {
     componentDidMount(){
@@ -29,8 +19,8 @@ class ProductDetails extends React.Component {
                         <div className="row">
                             <div className="image-zoom col-md-6 col-lg-6">
                                 <div className="product-img-lg p-lg-10 m-b-xs-30 text-center">
-                                    <a href="../images/3.png">
-                                        <img src={`../${this.props.selectedProduct.imagePath}`} alt="" />
+                                    <a href={`${process.env.PUBLIC_URL}/images/${this.props.selectedProduct.imageName}`}>
+                                        <img src={`${process.env.PUBLIC_URL}/images/${this.props.selectedProduct.imageName}`} alt="" />
                                     </a>
                                 </div>
                             </div>            
@@ -58,9 +48,11 @@ class ProductDetails extends React.Component {
                                     <hr/>
                                     <div className="pull-left">
                                         <b className="m-r-lg-5">Qty : </b>
-                                        <input type="text" className="form-item input-qtl" defaultValue="1"/>
+                                        <input id="quantity" type="text" className="form-item input-qtl" defaultValue="1" ref={(input) => this.textInput = input}/>
                                     </div>
-                                    <a href=" " className="ht-btn ht-btn-default">Add to cart</a>
+                                    <a className="ht-btn ht-btn-default"  onClick={()=>{
+                                    this.props.addToBasket(this.props.selectedProduct,parseInt(this.textInput.value));
+                                    }} >Add to cart</a>
                                     <a href=" " className="ht-btn bg-gray-c bg1-gray-4"><i className="fa fa-heart-o"></i></a>
                                     <a href=" " className="ht-btn bg-gray-c bg1-gray-4"><i className="fa fa-signal"></i></a>
                                 </div>
@@ -90,7 +82,7 @@ class ProductDetails extends React.Component {
                     <div className="row">
                         <div className="col-sm-6 col-md-4 col-lg-4">
                             <div className="product-item hover-img">
-                                <a href=" " className="product-img"><img src={require('../images/1.png')} alt="" /></a>
+                                <a href=" " className="product-img"><img src={`${process.env.PUBLIC_URL}/images/1.png`} alt="" /></a>
                                 <div className="product-caption">
                                     <h4 className="product-name"><a href=" ">360 FORGED® - MESH 8</a></h4>
                                     <ul className="rating">
@@ -114,7 +106,7 @@ class ProductDetails extends React.Component {
                         </div>
                         <div className="col-sm-6 col-md-4 col-lg-4">
                             <div className="product-item hover-img">
-                                <a href=" " className="product-img"><img src={require('../images/2.png')} alt="" /></a>
+                                <a href=" " className="product-img"><img src={`${process.env.PUBLIC_URL}/images/2.png`} alt="" /></a>
                                 <div className="product-caption">
                                     <h4 className="product-name"><a href=" ">360 FORGED® - MESH 8</a></h4>
                                     <ul className="rating">
@@ -138,7 +130,7 @@ class ProductDetails extends React.Component {
                         </div>
                         <div className="col-sm-6 col-md-4 col-lg-4">
                             <div className="product-item hover-img">
-                                <a href=" " className="product-img"><img src={require('../images/3.png')} alt="" /></a>
+                                <a href=" " className="product-img"><img src={`${process.env.PUBLIC_URL}/images/3.png`} alt="" /></a>
                                 <div className="product-caption">
                                     <h4 className="product-name"><a href=" ">360 FORGED® - MESH 8</a></h4>
                                     <ul className="rating">
@@ -170,4 +162,4 @@ function mapStateToProps({ selectedProduct }) {
     return { selectedProduct };
 }
 
-export default connect(mapStateToProps,{fetchProduct})(ProductDetails) ;
+export default connect(mapStateToProps,{fetchProduct,addToBasket})(ProductDetails) ;

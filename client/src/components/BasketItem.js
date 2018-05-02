@@ -9,7 +9,7 @@ class BasketItem extends Component{
           <div className="row m-lg-0">
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 p-l-lg-0">
               <a className="product-img">
-                <img src={`../${this.props.item.product.imagePath}`} alt="" />
+                <img src={`${process.env.PUBLIC_URL}/images/${this.props.item.product.imageName}`} alt="" />
               </a>
             </div>
             <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7 p-lg-0">

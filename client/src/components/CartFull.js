@@ -21,7 +21,7 @@ class  CartFull extends Component {
           <div className="row">
             <div className="col-sm-3 col-md-3 col-lg-3">
               <a href=" " className="cart-img-prev">
-                <img src={`../${item.product.imagePath}`} alt="" />
+                <img src={`${process.env.PUBLIC_URL}/images/${item.product.imageName}`} alt="" />
               </a>
             </div>
             <div className="col-sm-9 col-md-9 col-lg-9 p-lg-0">

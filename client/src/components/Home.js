@@ -30,7 +30,7 @@ class Home extends Component{
                             <div className="product-item hover-img">
                             <a   className="product-img">
                                 <img
-                                src={require('../images/b-img-2.jpg')}
+                                src={`${process.env.PUBLIC_URL}/images/b-img-2.jpg`}
                                 alt=""
                                 />
                             </a>
@@ -59,7 +59,7 @@ class Home extends Component{
                             <div className="product-item hover-img">
                             <a   className="product-img">
                                 <img
-                                src={require('../images/b-img-1.jpg')}
+                                src={`${process.env.PUBLIC_URL}/images/b-img-1.jpg`}
                                 alt=""
                                 />
                             </a>
@@ -88,7 +88,7 @@ class Home extends Component{
                             <div className="product-item hover-img">
                             <a   className="product-img">
                                 <img
-                                src={require('../images/b-img-10.jpg')}
+                                src={`${process.env.PUBLIC_URL}/images/b-img-10.jpg`}
                                 alt=""
                                 />
                             </a>
@@ -117,7 +117,7 @@ class Home extends Component{
                             <div className="product-item hover-img">
                             <a   className="product-img">
                                 <img
-                                src={require('../images/b-img-4.jpg')}
+                                src={`${process.env.PUBLIC_URL}/images/b-img-4.jpg`}
                                 alt=""
                                 />
                             </a>
@@ -146,7 +146,7 @@ class Home extends Component{
                             <div className="product-item hover-img">
                             <a   className="product-img">
                                 <img
-                                src={require('../images/b-img-10.jpg')}
+                                src={`${process.env.PUBLIC_URL}/images/b-img-10.jpg`}
                                 alt=""
                                 />
                             </a>
@@ -175,7 +175,7 @@ class Home extends Component{
                             <div className="product-item hover-img">
                             <a   className="product-img">
                                 <img
-                                src={require('../images/b-img-11.jpg')}
+                                src={`${process.env.PUBLIC_URL}/images/b-img-11.jpg`}
                                 alt=""
                                 />
                             </a>

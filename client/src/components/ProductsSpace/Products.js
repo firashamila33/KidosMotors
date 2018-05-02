@@ -1,22 +1,34 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { fetchProducts } from '../../actions';
 
-import ProductItem from './ProductItem';
+import {range} from 'lodash';
 import ProductsList from './ProductsList';
- 
+
+
 class Products extends React.Component{
-    constructor(state){
-        super(state);
-        
+    constructor(props){
+      super(props);
+      this.state={
+        activePage:1,
+        pageSize:6
+      }
     }
+    setActivePage(activePage){
+      
+      //console.log('yaaaaa : '+activePage);
+      this.setState({activePage:activePage});
+      
+    }    
 
-    componentDidMount() {
-        this.props.fetchProducts();
+    setPageSize(size){
+      this.setState({activePage:1,pageSize:size});
     }
+     
     render(){
+        const table = range(1, Math.ceil(this.props.productsList.length / this.state.pageSize)+1 ,1);
+        {table.map((i)=>{ 
+          return(<li key={i} className={this.state.activePage === i ? 'active' : ''}><a   onClick={()=>this.setActivePage(i)} >{i}</a></li>);
+        })}
         return(
-
             <div className="col-sm-8 col-md-9 col-lg-9">
             <div className="product product-grid">
               <div className="heading heading-2 m-b-lg-0">
@@ -59,12 +71,11 @@ class Products extends React.Component{
                         <button className="dropdown-toggle form-item w-80" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                           6
                         </button>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                          <li>6</li>
-                          <li>12</li>
-                          <li>24</li>
-                          <li>All</li>
-                        </ul>
+                        <ul  className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                          <li ><a onClick={()=>this.setPageSize(4)}>4</a></li>
+                          <li ><a onClick={()=>this.setPageSize(6)}>6</a></li>
+                          <li ><a onClick={()=>this.setPageSize(this.props.productsList.length)}>All</a></li>
+                          </ul>
                       </div>
                     </div>
                   </div>
@@ -72,7 +83,7 @@ class Products extends React.Component{
               </div>
               <div className="clearfix" />
               <div className="row">    
-                <ProductsList productslist={this.props.products}/>
+                <ProductsList productslist={this.props.productsList.slice((this.state.activePage-1)*this.state.pageSize,(this.state.activePage-1)*this.state.pageSize+this.state.pageSize)}/>
               </div>
               <nav aria-label="Page navigation">
                 <ul className="pagination ht-pagination">
@@ -82,26 +93,14 @@ class Products extends React.Component{
                         <i className="fa fa-chevron-left" />
                       </span>
                     </a>
-                  </li>
-                  <li className="active">
-                    <a>1</a>
-                  </li>
-                  <li>
-                    <a>2</a>
-                  </li>
-                  <li>
-                    <a>3</a>
-                  </li>
-                  <li>
-                    <a>4</a>
-                  </li>
-                  <li>
-                    <a>5</a>
-                  </li>
+                    </li>
+                    {table.map((i)=>{ 
+                      return(<li key={i} className={this.state.activePage === i ? 'active' : ''}><a   onClick={()=>this.setActivePage(i)} >{i}</a></li>);
+                    })}
                   <li>
                     <a aria-label="Next">
                       <span aria-hidden="true">
-                        <i className="fa fa-chevron-right" />
+                        <i className="fa fa-chevron-right"/>
                       </span>
                     </a>
                   </li>
@@ -113,8 +112,10 @@ class Products extends React.Component{
     }
 };
 
-function mapStateToProps({ products }) {
-    return { products };
-}
-  
-export default connect(mapStateToProps,{fetchProducts})(Products);
+
+
+
+
+
+export default Products ;
+

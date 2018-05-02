@@ -1,5 +1,4 @@
 import React , {Component} from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchCars } from '../../actions';
 
@@ -14,20 +13,7 @@ class CarShop extends Component{
    render(){
     return(
         <div className="wrap-body-inner">
-            <div className="hidden-xs">
-                <div className="row">
-                    <div className="col-lg-6">
-                        <ul className="ht-breadcrumb pull-left">
-                            <li className="home-act"><a  ><i className="fa fa-home"></i></a></li>
-                            <li className="home-act"><a  >Product</a></li>
-                            <li className="active">Tyres & Wheels</li>
-                        </ul>
-                    </div>
-                    <div className="col-lg-6">
-                        <a   className="ht-btn ht-btn-default pull-right m-t-lg-0"><i className="fa fa-upload"></i>Upload your Vehicle</a>
-                    </div>
-                </div>
-            </div>
+            
             <section className="m-t-lg-30 m-t-xs-0">
                 <div className="row">
                     <div className="col-sm-5 col-md-4 col-lg-3">
