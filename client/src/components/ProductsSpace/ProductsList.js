@@ -1,20 +1,40 @@
-import React,{Component} from 'react';
-import ProductItem from './ProductItem';
+import React from 'react';
+import ProductItemCard from './ProductItemCard';
+import ProductItemList from './ProductItemList';
 
 
-function renderProduct(product){
+
+
+function renderProductCards(product){
+   
     return(
-        <ProductItem key={product.name} product={product} />
+        <ProductItemCard key={product._id} product={product} />
     );
+    
 }
 
-const ProductList = (props)=>{
+function renderProductList(product){
     
+     return(
+         <ProductItemList key={product.name} product={product} />
+     );
+     
+ }
+
+const ProductList = (props)=>{
+    if (props.displayType ==='cards')
         return(
             <div>
-            {props.productslist.map(product=>renderProduct(product))}
+            {props.productslist.map(product=>renderProductCards(product))}
             </div>
     );
+    else if(props.displayType ==='list')
+         return(
+            <div>
+            {props.productslist.map(product=>renderProductList(product))}
+            </div>
+    );
+    console.log('props.productslist');
     
 
 }

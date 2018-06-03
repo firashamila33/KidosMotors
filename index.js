@@ -2,22 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
-
-
-
 const app = express();
-
 app.use(bodyParser.json());
-
-
-
-
 
 require('./routes/productsRoutes')(app);
 require('./routes/carsRoutes')(app);
-
-
-
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets

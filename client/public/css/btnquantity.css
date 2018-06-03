@@ -1,0 +1,52 @@
+.containerqt {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0 auto;
+  width: 980px;
+  margin-left: 0px;
+  padding-left: 0px;
+  top: 25%;
+  margin: 0 auto;
+  position: relative;
+  right:0px;
+}
+
+
+.qt, .qt-plus, .qt-minus {
+	display: block;
+	float: left;
+}
+
+.qt {
+	font-size: 19px;
+	line-height: 50px;
+	width: 50px;
+	text-align: center;
+}
+
+.qt-plus, .qt-minus {
+	background: #fcfcfc;
+	border: none;
+	font-size: 30px;
+	font-weight: 200;
+	height: 100%;
+	padding: 0 20px;
+	-webkit-transition: background .2s linear;
+	-moz-transition: background .2s linear;
+	-ms-transition: background .2s linear;
+	-o-transition: background .2s linear;
+	transition: background .2s linear;
+}
+
+.qt-plus:hover, .qt-minus:hover {
+	background: #53b5aa;
+	color: #fff;
+	cursor: pointer;
+}
+
+.qt-plus {
+	line-height: 50px;
+}
+
+.qt-minus {
+	line-height: 47px;
+}

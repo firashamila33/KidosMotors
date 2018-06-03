@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR} from "./types";
+import {FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR, BASKET_EDIT_ITEM} from "./types";
 
 
 
@@ -17,8 +17,10 @@ export const fetchProduct = (id) =>async dispatch =>{
 export function addToBasket(product , quantity){
   return(
     {type: BASKET_ADD,
-      payload : product,
-      quantity
+      payload : { 
+                  product,
+                  quantity
+                }
     }
   ); 
 }
@@ -28,7 +30,16 @@ export function removeFromBasket(id){
     type: BASKET_REMOVE_ITEM,
     payload : id
     }
-  ); 
+  );
+}
+
+export function changeBasketItem(product,quantity){
+  return({
+    type : BASKET_EDIT_ITEM,
+    payload : {product,
+               quantity
+              }
+  })
 }
 
 export const fetchCars = () =>async dispatch =>{

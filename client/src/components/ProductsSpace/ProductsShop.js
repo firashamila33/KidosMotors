@@ -2,7 +2,6 @@ import React , {Component} from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions';
-import * as $ from 'jquery';
 
 import Products from './Products';
 import ProductDetails from './ProductDetails';
@@ -12,7 +11,7 @@ class ProductsShop extends Component{
     constructor(props){
         super(props);
         this.state={
-          activePage:1
+          activePage:'TYRES&WHEELS',
         }
     }
 
@@ -23,7 +22,6 @@ class ProductsShop extends Component{
     renderFiltredProducts(activePage){
         this.setState({activePage});
         this.props.fetchProducts(activePage);
-
     }
     
     
@@ -64,7 +62,7 @@ class ProductsShop extends Component{
                             </div>
                             <BrowserRouter>
                                     <div>
-                                    <Route exact path="/products" render={()=><Products productsList={this.props.products}/>} />
+                                    <Route exact path="/products" render={()=><Products productsCategory={this.state.activePage} productsList={this.props.products}/>} />
                                     <Route exact path="/product/:id" component={ProductDetails} />
                                     </div>
                             </BrowserRouter>
