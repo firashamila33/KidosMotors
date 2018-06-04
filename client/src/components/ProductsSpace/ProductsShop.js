@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions';
 
-import Products from './Products';
+import ProductsContainer from './ProductsContainer';
 import ProductDetails from './ProductDetails';
 
 class ProductsShop extends Component{
@@ -62,8 +62,8 @@ class ProductsShop extends Component{
                             </div>
                             <BrowserRouter>
                                     <div>
-                                    <Route exact path="/products" render={()=><Products productsCategory={this.state.activePage} productsList={this.props.products}/>} />
-                                    <Route exact path="/product/:id" component={ProductDetails} />
+                                    <Route exact path="/products" render={()=><ProductsContainer productsCategory={this.state.activePage} productsList={this.props.products}/>} />
+                                    <Route exact path="/products/singlproduct" component={ProductDetails} />
                                     </div>
                             </BrowserRouter>
 

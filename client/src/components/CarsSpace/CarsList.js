@@ -1,23 +1,42 @@
-import React,{Component} from 'react';
-import CarItem from './CarItem';
+import React from 'react';
+import CarItemCard from './CarItemCard';
+import CarItemList from './CarItemList';
 
 
-class CarsList extends Component{
 
-    renderProduct(car){
-        return(
-            <CarItem key={car.name} car={car} />
-        );
+
+function renderCarCards(car){
+   
+    return(
+        <CarItemCard key={car._id} car={car} />
+    );
+    
 }
 
-    render(){
+function renderCarList(car){
+    
+     return(
+         <CarItemList key={car.name} car={car} />
+     );
+     
+ }
+
+const CarList = (props)=>{
+    if (props.displayType ==='cards')
         return(
             <div>
-            {this.props.carslist.map(car=>this.renderProduct(car))}
+            {props.carslist.map(car=>renderCarCards(car))}
             </div>
     );
-    }
+    else if(props.displayType ==='list')
+         return(
+            <div>
+            {props.carslist.map(car=>renderCarList(car))}
+            </div>
+    );
+    console.log('props.carslist');
+    
 
 }
 
-export default CarsList;
+export default CarList;

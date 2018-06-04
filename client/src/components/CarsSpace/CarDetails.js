@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCar } from '../../actions';
+import { Link } from 'react-router-dom';
+
 
 class CarDetails extends React.Component {
-    componentDidMount(){
-        //this.props.fetchProduct(this.props.match.params.id.split(':')[1]);        
-    }
+    
     render(){
+		var {name,price,imageName}=this.props.selectedCar;
         return (
             <div className="wrap-body-inner">
 						<div className="hidden-xs">
@@ -16,18 +16,20 @@ class CarDetails extends React.Component {
 									<li className="home-act"><a href=""><i className="fa fa-home"></i></a></li>
 									<li className="home-act"><a href="">Product</a></li>
 									<li className="home-act"><a href="">Tyres & Wheels</a></li>
-									<li className="active">360 FORGED® - MESH 8</li>
+									<li className="active">{name}</li>
 									</ul>
 								</div>
 								<div className="col-lg-6">
-									<a href="" className="ht-btn ht-btn-default pull-right m-t-lg-0"><i className="fa fa-upload"></i>Upload your Vehicle</a>
+									<Link to={"/cars"} style={{width:25}} className="col-sm-1 col-md-1 col-lg-1 p-lg-0 ht-btn ht-btn-default pull-right">
+										<i  style={{marginLeft:7}} className="fa fa-remove center"/>
+									</Link> 								
 								</div>
 							</div>
 						</div>
 						<section className="m-t-lg-30 m-t-xs-0">
 							<div className="product_detail no-bg p-lg-0">
-								<h3 className="product-name color1-f">360 FORGED® - MESH 8 / 
-									<span className="product-price color-red">$128,000.00 <i className="color-9 color1-9"> ( Plus Taxes & Licensing ) </i></span>
+								<h3 className="product-name color1-f">{name} / 
+									<span className="product-price color-red">${price}000.00 <i className="color-9 color1-9"> ( Plus Taxes & Licensing ) </i></span>
 									<span className="car-status m-l-lg-10">USED</span>
 								</h3>
 								<div className="row">
@@ -35,8 +37,8 @@ class CarDetails extends React.Component {
 										<div className="product-img-lg bg-gray-f5 bg1-gray-15">
 											<div className="image-zoom row m-t-lg-5 m-l-lg-ab-5 m-r-lg-ab-5">
 												<div className="col-md-12 col-lg-12 p-lg-5">
-													<a href="images/b-img-3.jpg">
-														<img src="../images/b-img-3.jpg" alt=""/>
+													<a  href={`${process.env.PUBLIC_URL}/images/${imageName}`}>
+														<img  src={`${process.env.PUBLIC_URL}/images/${imageName}`} alt=""/>
 													</a>
 												</div>
 												<div className="col-sm-3 col-md-3 col-lg-3 p-lg-5">
@@ -250,8 +252,10 @@ class CarDetails extends React.Component {
         );
     }
 };
-function mapStateToProps({ selectedCar }) {
-    return { selectedCar };
+function mapStateToProps({selectedProduct}) {
+    return { selectedCar : selectedProduct };
 }
 
-export default connect(mapStateToProps,{fetchCar})(CarDetails) ;
+export default connect(mapStateToProps)(CarDetails) ;
+
+

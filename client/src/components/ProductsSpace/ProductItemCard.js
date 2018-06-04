@@ -1,7 +1,7 @@
 import React,{Component} from 'react' ;
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addToBasket,addToWhishList,removeFromWhishList } from '../../actions';
+import {fetchSingleProduct, addToBasket,addToWhishList,removeFromWhishList } from '../../actions';
 import $ from 'jquery';
 
 class ProductItemCard extends Component{
@@ -89,7 +89,7 @@ class ProductItemCard extends Component{
                                     }} >Add to cart
                         </a>
                         <ul className="absolute-caption">
-                        <li >
+                        <li>
                             <i id={JSON.stringify(product)} className={this.state.isInWhishList ? "fa fa-heart" : "fa fa-heart-o"} 
                             style={heartStyle} 
                             onClick={this.ToggleProductWhishlist.bind(this)}
@@ -102,11 +102,12 @@ class ProductItemCard extends Component{
                                     this.props.addToBasket(product,1);
                                     }}/>
                         </li>
-                        <li>
-                            <Link to={`/product/:${product._id}`}>
+                        <li onClick={()=>this.props.fetchSingleProduct(product)}>
+                            <Link to={`/products/singlproduct`}>
                             <i className="fa fa-search" />
                             </Link>
                         </li>
+ 
                         </ul>
                     </div>
                 </div>
@@ -123,4 +124,4 @@ function mapStateToProps({ whishlistproducts }) {
 }
 
 
-    export default connect(mapStateToProps,{addToBasket, addToWhishList, removeFromWhishList})(ProductItemCard) ;
+    export default connect(mapStateToProps,{fetchSingleProduct, addToBasket, addToWhishList, removeFromWhishList})(ProductItemCard) ;

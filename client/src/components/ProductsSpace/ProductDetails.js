@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchProduct ,addToBasket } from '../../actions';
+import { addToBasket } from '../../actions';
 import { Link } from 'react-router-dom';
 
 
 
 class ProductDetails extends React.Component {
-    componentDidMount(){
-        this.props.fetchProduct(this.props.match.params.id.split(':')[1]);        
-    }
+    /*componentDidMount(){
+        this.props.fetchProduct(this.props.match.params.id.split(':')[1]);   
+        console.log(this.props.match.params.id)     
+    }*/
     render(){
         return (
             <div className="col-sm-8 col-md-9 col-lg-9">
@@ -159,7 +160,7 @@ class ProductDetails extends React.Component {
     }
 };
 function mapStateToProps({ selectedProduct }) {
-    return { selectedProduct };
+    return { selectedProduct };         
 }
 
-export default connect(mapStateToProps,{fetchProduct,addToBasket})(ProductDetails) ;
+export default connect(mapStateToProps,{addToBasket})(ProductDetails) ;

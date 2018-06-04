@@ -1,40 +1,45 @@
-import React from 'react';
+import React,{Component} from 'react';
 import ProductItemCard from './ProductItemCard';
 import ProductItemList from './ProductItemList';
 
 
+class ProductList extends Component{
 
+    constructor(props){
+        super();
 
-function renderProductCards(product){
-   
-    return(
-        <ProductItemCard key={product._id} product={product} />
-    );
-    
-}
-
-function renderProductList(product){
-    
-     return(
-         <ProductItemList key={product.name} product={product} />
-     );
+    }
+    renderProductCards(product){
+        
+         return(
+             <ProductItemCard  key={product._id} product={product} />
+         );
+         
+    }
      
- }
-
-const ProductList = (props)=>{
-    if (props.displayType ==='cards')
+    renderProductList(product){
+         
+          return(
+              <ProductItemList key={product.name} product={product} />
+          );
+          
+    }
+    
+    render(){
+        if (this.props.displayType ==='cards')
         return(
             <div>
-            {props.productslist.map(product=>renderProductCards(product))}
+            {this.props.productslist.map(product=>this.renderProductCards(product))}
             </div>
-    );
-    else if(props.displayType ==='list')
-         return(
-            <div>
-            {props.productslist.map(product=>renderProductList(product))}
-            </div>
-    );
-    console.log('props.productslist');
+        );
+        else if(this.props.displayType ==='list')
+            return(
+                <div>
+                {this.props.productslist.map(product=>this.renderProductList(product))}
+                </div>
+        );
+    }
+    
     
 
 }

@@ -1,8 +1,10 @@
-import { FETCH_SINGLE_PRODUCTS } from '../actions/types';
+import { SELECTED_PRODUCT } from '../actions/types';
 
 export default function(state = [], action) {
+  
   switch (action.type) {
-    case FETCH_SINGLE_PRODUCTS:
+    case SELECTED_PRODUCT:
+    console.log('i am in the reducer');
       return action.payload;
     default:
       return state;

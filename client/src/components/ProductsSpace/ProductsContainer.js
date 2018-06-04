@@ -3,7 +3,7 @@ import React from 'react';
 import {range} from 'lodash';
 import ProductsList from './ProductsList';
 
-class Products extends React.Component{
+class ProductsContainer extends React.Component{
     constructor(props){
       super(props);
       this.state={
@@ -122,5 +122,5 @@ class Products extends React.Component{
           </div>;
     }
 };
-export default Products ;
+export default ProductsContainer ;
 
