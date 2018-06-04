@@ -1,0 +1,14 @@
+svg {
+    max-height: 80px;
+  }
+  
+  .heart {
+    fill: transparent;
+    transition: all .5s;
+  }
+  
+  .heart-fill-up {
+    fill: red;
+  }
+  
+  

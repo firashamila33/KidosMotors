@@ -32,6 +32,8 @@ export default function(state = [], action) {
       });
       return state;
 
+      
+
     case BASKET_EDIT_ITEM:
       var {quantity,product}=action.payload;
       var newstate = [];

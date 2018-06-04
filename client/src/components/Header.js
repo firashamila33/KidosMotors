@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import Basket from './Basket';
+import { connect } from "react-redux";
 
 
 
@@ -26,17 +27,20 @@ class Header extends  Component{
                             <span>My Account</span>
                             </a>
                         </li>
+                        
                         <li>
-                            <a   className="icon-1">
-                            <i className="fa fa-heart-o" />
-                            <span>Wishlist (0)</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a   className="icon-1">
+                            <a className="icon-1">
                             <i className="fa fa-cart-plus" />
                             <span>Checkout</span>
                             </a>
+                        </li>
+                        <li className="cart-icon">
+                            <Link to={"/whishlist"}>
+                            
+                                <i className="fa fa-heart" />
+                                <span className="badge">{this.props.whishlistproducts.length}</span>    
+                                                                
+                            </Link>
                         </li>
                         <Basket/>  
                         </ul>
@@ -143,6 +147,9 @@ class Header extends  Component{
         );
     }
 };
-
-export default Header;
+function mapStateToProps({ whishlistproducts }) {
+    return { whishlistproducts };
+  }
+  
+export default connect(mapStateToProps)(Header);
 

@@ -1,17 +1,58 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { addToBasket } from "../../actions";
+import {
+  addToBasket,
+  addToWhishList,
+  removeFromWhishList
+} from "../../actions";
 
 class ProductItemList extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { isInWhishList: false, product: this.props.product };
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+
+  ToggleProductWhishlist(event) {
+
+    var product = JSON.parse(event.target.id);
+    if (!this.state.isInWhishList) {
+      this.props.addToWhishList(product);
+      this.setState({ isInWhishList: true });
+    } else {
+      this.props.removeFromWhishList(product);
+      this.setState({ isInWhishList: false });
+    }
+
+  }
+
+  componentDidMount() {
+    var product = this.props.product;
+
+    if (
+      this.props.whishlistproducts.filter(function(e) {
+        return e._id === product._id;
+      }).length === 1
+    ) {
+      this.setState({ isInWhishList: true });
+    }
+  }
+
   render() {
+    const heartStyle = {
+      color: '#d11717',
+      fontWeight: 'bold'
+    };
+    const {product} = this.props;
     return (
       <div className="product-item hover-img">
         <div className="row">
           <div className="col-sm-6 col-md-5 col-lg-4">
-            <a  className="product-img">
+            <a className="product-img">
               <img
-                src={`${process.env.PUBLIC_URL}/images/${this.props.product
+                src={`${process.env.PUBLIC_URL}/images/${product
                   .imageName}`}
                 style={{ width: "197.5px", height: "197.5px" }}
                 alt=""
@@ -21,7 +62,7 @@ class ProductItemList extends Component {
           <div className="col-sm-6 col-md-7 col-lg-8 static-position">
             <div className="product-caption">
               <h4 className="product-name">
-                <a>{this.props.product.name}</a>
+                <a>{product.name}</a>
               </h4>
               <ul className="rating">
                 <li className="active">
@@ -41,7 +82,9 @@ class ProductItemList extends Component {
                 </li>
               </ul>
               <div className="product-price-group">
-                <span className="product-price">${this.props.product.price}</span>
+                <span className="product-price">
+                  ${product.price}
+                </span>
               </div>
               <p className="product-txt">
                 Nunc facilisis sagittis ullamcorper. Proin lectus ipsum
@@ -49,25 +92,32 @@ class ProductItemList extends Component {
               <a
                 className="ht-btn ht-btn-default"
                 onClick={() => {
-                  this.props.addToBasket(this.props.product, 1);
+                  this.props.addToBasket(product, 1);
                 }}
               >
                 Add to cart
               </a>
               <ul className="absolute-caption">
                 <li>
-                  <i className="fa fa-heart-o" />
+                  <i
+                    id={JSON.stringify(product)}
+                    className={
+                      this.state.isInWhishList ? "fa fa-heart" : "fa fa-heart-o"
+                    }
+                    style={heartStyle}
+                    onClick={this.ToggleProductWhishlist.bind(this)}
+                  />
                 </li>
                 <li>
                   <i
                     className="fa fa-shopping-basket"
                     onClick={() => {
-                      this.props.addToBasket(this.props.product, 1);
+                      this.props.addToBasket(product, 1);
                     }}
                   />
                 </li>
                 <li>
-                  <Link to={`/product/:${this.props.product._id}`}>
+                  <Link to={`/product/:${product._id}`}>
                     <i className="fa fa-search" />
                   </Link>
                 </li>
@@ -80,4 +130,8 @@ class ProductItemList extends Component {
   }
 }
 
-export default connect(null, { addToBasket })(ProductItemList);
+function mapStateToProps({ whishlistproducts }) {
+  return { whishlistproducts };
+}
+
+export default connect(mapStateToProps, { addToBasket, addToWhishList, removeFromWhishList })(ProductItemList);

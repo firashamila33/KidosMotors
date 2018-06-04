@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR, BASKET_EDIT_ITEM} from "./types";
+import {FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR, BASKET_EDIT_ITEM, WHISHLIST_ADD_PRODUCT, WHISHLIST_REMOVE_PRODUCT} from "./types";
 
 
 
@@ -39,6 +39,20 @@ export function changeBasketItem(product,quantity){
     payload : {product,
                quantity
               }
+  })
+}
+
+export function addToWhishList(product){
+  return({
+    type : WHISHLIST_ADD_PRODUCT,
+    payload : product
+  })
+}
+
+export function removeFromWhishList(product){
+  return({
+    type : WHISHLIST_REMOVE_PRODUCT,
+    payload : product
   })
 }
 

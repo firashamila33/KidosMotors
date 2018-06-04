@@ -8,3 +8,5 @@ export const BASKET_REMOVE_ITEM='basket_remove_item';
 export const FETCH_CARS='fetch_cars';
 export const FETCH_SINGLE_CAR='fetch_single_car';
 export const BASKET_EDIT_ITEM='basket_edit_item';
+export const WHISHLIST_ADD_PRODUCT='whishlist_add_product';
+export const WHISHLIST_REMOVE_PRODUCT='whishlist_remove_product';

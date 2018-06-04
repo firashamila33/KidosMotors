@@ -12,6 +12,7 @@ import SellA_Car from "./sellA_Car"
 import ContactUs from "./contactUs"
 import CartFull from "./CartFull";
 import CarDetails from './CarsSpace/CarDetails';
+import WhishList from './WishList'
 
 
 
@@ -32,7 +33,7 @@ class App extends Component {
                     <Route exact path="/sellacar" component={SellA_Car} />
                     <Route exact path="/contactus" component={ContactUs} />
                     <Route exact path="/products_cart" component={CartFull} />
-
+                    <Route exact path="/whishlist" component={WhishList} />                    
               </SharedLayout>
          </BrowserRouter>
       
