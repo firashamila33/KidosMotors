@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { connect } from "react-redux";
-import { removeFromWhishList, addToWhishList} from '../actions';
+import { removeFromWhishList,addToBasket} from '../actions';
 import * as $ from 'jquery';
 
 
@@ -35,10 +35,16 @@ class  WhishList extends Component {
             </div>
           </div>
         </div>
+
+        <div className="col-sm-2 col-md-2 col-lg-2 cart-item">
+          <a className="ht-btn ht-btn-default" style={{marginTop:'30px'}} onClick={()=>{this.props.addToBasket(product,1); }} >Add to cart
+          </a>
+        </div>  
         
         <div className="col-sm-1 col-md-1 col-lg-1 cart-item">
           <i className="fa fa-remove cart-remove-btn" onClick={()=>this.props.removeFromWhishList(product)}/>
         </div>
+        
       </div>
       
       );
@@ -46,7 +52,7 @@ class  WhishList extends Component {
   };
 
   render(){
-    return <div className="wrap-body-inner">
+    return <div className="wrap-body-inner" style={{marginLeft: 'auto', marginRight: 'auto'}}>
     <div className="hidden-xs">
       <div className="row">
         <div className="col-lg-6">
@@ -69,7 +75,7 @@ class  WhishList extends Component {
         <div className="heading">
           <h3>Cart</h3>
         </div>
-        <div className="display-inline-block width-100">
+        <div className="display-inline-block width-100" style={{marginLeft: 'auto', marginRight: 'auto'}}>
 
           {this.props.whishlistproducts.map((e)=>this.renderItem(e))}
           
@@ -97,5 +103,5 @@ function mapStateToProps({ whishlistproducts }) {
   return { whishlistproducts };
 }
 
-export default connect(mapStateToProps,{removeFromWhishList})(WhishList);
+export default connect(mapStateToProps,{addToBasket,removeFromWhishList})(WhishList);
 
