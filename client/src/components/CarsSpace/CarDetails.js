@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 
 
 class CarDetails extends React.Component {
+
+	componentDidMount(){
+		console.log(this.props.selectedCar);
+	}
     
     render(){
+		console.log(this.props.selectedCar);
 		var {name,price,imageName}=this.props.selectedCar;
         return (
             <div className="wrap-body-inner">
@@ -252,8 +257,8 @@ class CarDetails extends React.Component {
         );
     }
 };
-function mapStateToProps({selectedProduct}) {
-    return { selectedCar : selectedProduct };
+function mapStateToProps({selectedCar}) {
+    return { selectedCar };
 }
 
 export default connect(mapStateToProps)(CarDetails) ;

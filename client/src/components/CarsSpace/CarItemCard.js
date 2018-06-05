@@ -1,7 +1,7 @@
 import React,{Component} from 'react' ;
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchSingleProduct,addToWhishList,removeFromWhishList } from '../../actions';
+import { fetchSingleCar,addToWhishList,removeFromWhishList } from '../../actions';
 
 class CarItemCard extends Component{
 
@@ -13,8 +13,6 @@ class CarItemCard extends Component{
                     isHovered:false
                     };
     };
-      
-
     ToggleCarWhishlist(event){
         var car = JSON.parse(event.target.id);
         if(!this.state.isInWhishList){
@@ -27,7 +25,6 @@ class CarItemCard extends Component{
             
         }
     }
-
     componentDidMount(){
         var car= this.props.car;
         
@@ -35,7 +32,6 @@ class CarItemCard extends Component{
             this.setState({isInWhishList:true})
         }
     }
-
     mouseHover(event){
         this.setState({isHovered:true});  
     }
@@ -76,7 +72,7 @@ class CarItemCard extends Component{
                     <i className="fa fa-clock-o" />2016
                     </li>
                     
-                    <li onClick={()=>this.props.fetchSingleProduct(this.props.car)}>
+                    <li onClick={()=>this.props.fetchSingleCar(this.props.car)}>
                         <Link to={`/cars/singlproduct`}>
                         <i className="fa fa-search" />View
                         </Link>
@@ -107,4 +103,4 @@ function mapStateToProps({ whishlistproducts }) {
 }
 
 
-export default connect(mapStateToProps,{ fetchSingleProduct, addToWhishList, removeFromWhishList})(CarItemCard) ;
+export default connect(mapStateToProps,{ fetchSingleCar, addToWhishList, removeFromWhishList})(CarItemCard) ;

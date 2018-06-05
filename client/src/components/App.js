@@ -27,13 +27,15 @@ class App extends Component {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/products" component={ProductsShop} />
-                    <Route exact path="/product/:id"  component={ProductsShop} />
                     <Route exact path="/cars" component={CarShop} />
                     <Route exact path="/carso" component={CarDetails} />                    
                     <Route exact path="/sellacar" component={SellA_Car} />
                     <Route exact path="/contactus" component={ContactUs} />
                     <Route exact path="/products_cart" component={CartFull} />
-                    <Route exact path="/whishlist" component={WhishList} />                    
+                    <Route exact path="/whishlist" component={WhishList} />
+                    <Route exact path="/cars/singlproduct" component={CarShop} />   
+                    <Route exact path="/products/singlproduct" component={ProductsShop} />  
+                                     
               </SharedLayout>
          </BrowserRouter>
       

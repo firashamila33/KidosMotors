@@ -4,7 +4,6 @@ export default function(state = [], action) {
   
   switch (action.type) {
     case SELECTED_PRODUCT:
-    console.log('i am in the reducer');
       return action.payload;
     default:
       return state;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR, BASKET_EDIT_ITEM, WHISHLIST_ADD_PRODUCT, WHISHLIST_REMOVE_PRODUCT, SELECTED_PRODUCT} from "./types";
+import {FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR, BASKET_EDIT_ITEM, WHISHLIST_ADD_PRODUCT, WHISHLIST_REMOVE_PRODUCT, SELECTED_PRODUCT, SELECTED_CAR} from "./types";
 
 
 
@@ -15,10 +15,18 @@ export const fetchProducts = (category) =>async dispatch =>{
 }*/
 
 export function fetchSingleProduct(product){
-  console.log('i am in action')
   return(
     {
       type : SELECTED_PRODUCT,
+      payload : product
+    }
+  );
+}
+
+export function fetchSingleCar(product){
+  return(
+    {
+      type : SELECTED_CAR,
       payload : product
     }
   );
