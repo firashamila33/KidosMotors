@@ -2,7 +2,6 @@ import React,{Component} from 'react' ;
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {fetchSingleProduct, addToBasket,addToWhishList,removeFromWhishList } from '../../actions';
-import $ from 'jquery';
 
 class ProductItemCard extends Component{
 

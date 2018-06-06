@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import { connect } from "react-redux";
 import { removeFromWhishList,addToBasket} from '../actions';
-import * as $ from 'jquery';
 
 
 

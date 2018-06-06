@@ -4,7 +4,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { fetchCars } from '../../actions';
 
 import CarDetails from './CarDetails';
-import CarList from './CarsList';
 import CarsContainer from './CarsContainer';
 
 class CarShop extends Component{

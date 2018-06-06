@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 
 import {range} from 'lodash';
 import CarsList from './CarsList';
+import { connect } from 'react-redux' ;
 
 class CarsContainer extends Component {
 
@@ -10,7 +11,8 @@ class CarsContainer extends Component {
         this.state={
           activePage:1,
           pageSize:6,
-          displayType:'cards'
+          displayType:'cards',
+          fetchedCars:{}
         }
       }
       setActivePage(activePage){
@@ -23,8 +25,10 @@ class CarsContainer extends Component {
         this.setState({displayType});
       }
 
+
     render(){
-        const table = range(1, Math.ceil(this.props.carsList.length / this.state.pageSize)+1 ,1);        
+        const table = range(1, Math.ceil(this.props.carsList.length / this.state.pageSize)+1 ,1);
+        const cars = this.props.fetchedCars.length !== 0 ? this.props.fetchedCars : this.props.carsList 
         return(
             <section className="m-t-lg-30 m-t-xs-0">
             <div className="row">
@@ -186,7 +190,7 @@ class CarsContainer extends Component {
                                                 <a
                                                 onClick={() =>
                                                     this.setPageSize(
-                                                    this.props.carsList.length
+                                                    cars.length
                                                     )}
                                                 >
                                                 All
@@ -218,7 +222,7 @@ class CarsContainer extends Component {
                                 </div>
                             </div> */}
                             
-                            <CarsList displayType={this.state.displayType} carslist={this.props.carsList.slice((this.state.activePage - 1) * this.state.pageSize, (this.state.activePage - 1) * this.state.pageSize + this.state.pageSize)} />
+                            <CarsList displayType={this.state.displayType} carslist={cars.slice((this.state.activePage - 1) * this.state.pageSize, (this.state.activePage - 1) * this.state.pageSize + this.state.pageSize)} />
 
                             
                         </div>
@@ -237,7 +241,7 @@ class CarsContainer extends Component {
                                     </li>;
                                 })}
                                 <li>
-                                    <a aria-label="Next"  style={this.state.activePage === Math.ceil(this.props.carsList.length / this.state.pageSize) ? {display:'none'} : {display:'block'}}>
+                                    <a aria-label="Next"  style={this.state.activePage === Math.ceil(cars.length / this.state.pageSize) ? {display:'none'} : {display:'block'}}>
                                     <span aria-hidden="true">
                                         <i className="fa fa-chevron-right"  onClick={()=>{this.setActivePage(this.state.activePage+1)}} />
                                     </span>
@@ -255,5 +259,8 @@ class CarsContainer extends Component {
     }
 }
 
+function mapStateToProps({fetchedCars}){
+    return {fetchedCars};
+}
 
-export default CarsContainer ;
+export default connect(mapStateToProps)(CarsContainer);

@@ -7,9 +7,10 @@ import {
 export default function(state = [], action) {
   switch (action.type) {
     case BASKET_ADD:
+      var {product,quantity} = action.payload;    
       var exist = false;
       var currentQuentity = 0;
-      var {product,quantity} = action.payload;
+      
 
       state.forEach(e => {
         if (e.product._id === product._id) {
@@ -35,7 +36,6 @@ export default function(state = [], action) {
       
 
     case BASKET_EDIT_ITEM:
-      var {quantity,product}=action.payload;
       var newstate = [];
       state.map(function(item) {
         if(item.product._id !== action.payload.product._id)

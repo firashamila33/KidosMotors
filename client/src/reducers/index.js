@@ -7,6 +7,7 @@ import basketproductsReducer from './basketReducer';
 import carsReducer from './carsReducer';
 import whishListReducer from './whishListReducer';
 import selectedCarReducer from './currentCarReducer';
+import fetchedCarsReducer from './fetchedCarsReducer';
 
 export default combineReducers({
   locationPath:pathReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
   basketproducts:basketproductsReducer,
   cars:carsReducer,
   whishlistproducts:whishListReducer,
+  fetchedCars:fetchedCarsReducer
 });

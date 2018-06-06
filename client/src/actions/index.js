@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FETCH_PRODUCTS ,FETCH_SINGLE_PRODUCTS, BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR, BASKET_EDIT_ITEM, WHISHLIST_ADD_PRODUCT, WHISHLIST_REMOVE_PRODUCT, SELECTED_PRODUCT, SELECTED_CAR} from "./types";
+import {FETCH_FILTRED_CARS, FETCH_PRODUCTS , BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR, BASKET_EDIT_ITEM, WHISHLIST_ADD_PRODUCT, WHISHLIST_REMOVE_PRODUCT, SELECTED_PRODUCT, SELECTED_CAR} from "./types";
 
 
 
@@ -7,12 +7,6 @@ export const fetchProducts = (category) =>async dispatch =>{
   const res = await axios.get(`/api/products/:${category}`);
   dispatch({type: FETCH_PRODUCTS,payload :res.data});
 }
-
-
-/*export const fetchProduct = (id) =>async dispatch =>{
-  const res = await axios.get(`/api/product/:${id}`);
-  dispatch({type: FETCH_SINGLE_PRODUCTS,payload :res.data});
-}*/
 
 export function fetchSingleProduct(product){
   return(
@@ -79,9 +73,14 @@ export const fetchCars = () =>async dispatch =>{
   dispatch({type: FETCH_CARS,payload :res.data});
 }
 
-export const fetchCar = (id) =>async dispatch =>{
+export const fetchCar = (id) => async dispatch =>{
   const res = await axios.get(`/api/car/:${id}`);
   dispatch({type: FETCH_SINGLE_CAR,payload :res.data});
+}
+
+export const fetchFiltredCars = (filters) => async dispatch => {
+  const res = await axios.post('api/carfilter',(filters));
+  dispatch({type : FETCH_FILTRED_CARS,payload : res.data});
 }
 
 

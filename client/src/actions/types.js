@@ -12,3 +12,4 @@ export const WHISHLIST_ADD_PRODUCT='whishlist_add_product';
 export const WHISHLIST_REMOVE_PRODUCT='whishlist_remove_product';
 export const SELECTED_PRODUCT='selected_product';
 export const SELECTED_CAR='selected_car';
+export const FETCH_FILTRED_CARS='fetch_filtred_cars';

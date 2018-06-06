@@ -7,11 +7,12 @@ class CarItemList extends Component{
 
     constructor(props) {
         super(props);
-        this.state={isInWhishList:false,
-                    car:this.props.car,
-                    isHovered:false
-                    };
-    };
+        this.state={
+                isInWhishList:false,
+                car:this.props.car,
+                isHovered:false,
+            };
+    }; 
       
 
     ToggleCarWhishlist(event){
@@ -28,8 +29,7 @@ class CarItemList extends Component{
     }
 
     componentDidMount(){
-        var car= this.props.car;
-        
+        var {car}= this.props;
         if(this.props.whishlistproducts.filter(function(e){return e._id === car._id}).length===1){
             this.setState({isInWhishList:true})
         }
@@ -112,10 +112,8 @@ class CarItemList extends Component{
 
 };
 
-function mapStateToProps({ whishlistproducts }) {
-    return { whishlistproducts };
+  function mapStateToProps({ whishlistproducts }) {
+    return { whishlistproducts};
 }
-
-
 
 export default connect(mapStateToProps,{ fetchSingleProduct, addToWhishList, removeFromWhishList})(CarItemList) ;

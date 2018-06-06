@@ -23,9 +23,9 @@ class ProductsContainer extends React.Component{
     }
     render(){
         const table = range(1, Math.ceil(this.props.productsList.length / this.state.pageSize)+1 ,1);
-        {table.map((i)=>{ 
+        table.map((i)=>{ 
           return(<li key={i} className={this.state.activePage === i ? 'active' : ''}><a onClick={()=>this.setActivePage(i)} >{i}</a></li>);
-        })}
+        })
         return <div className="col-sm-8 col-md-9 col-lg-9">
             <div className="product product-grid">
               <div className="heading heading-2 m-b-lg-0">
