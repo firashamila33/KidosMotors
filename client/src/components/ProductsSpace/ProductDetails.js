@@ -6,10 +6,6 @@ import { Link } from 'react-router-dom';
 
 
 class ProductDetails extends React.Component {
-    /*componentDidMount(){
-        this.props.fetchProduct(this.props.match.params.id.split(':')[1]);   
-        console.log(this.props.match.params.id)     
-    }*/
     render(){
         return (
             <div className="col-sm-8 col-md-9 col-lg-9">

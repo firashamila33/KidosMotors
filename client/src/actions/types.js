@@ -10,4 +10,5 @@ export const FETCH_SINGLE_CAR='fetch_single_car';
 export const BASKET_EDIT_ITEM='basket_edit_item';
 export const WHISHLIST_ADD_PRODUCT='whishlist_add_product';
 export const WHISHLIST_REMOVE_PRODUCT='whishlist_remove_product';
-export const SELECTED_PRODUCT='fetch_product'
+export const SELECTED_PRODUCT='selected_product';
+export const SELECTED_CAR='selected_car';
