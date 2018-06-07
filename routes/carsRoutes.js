@@ -5,12 +5,33 @@ module.exports = app => {
     res.send(fetchedCars);
   });
 
-
-
   app.post('/api/carfilter',(req,res)=>{
     console.log('**********************************');
     console.log(req.body);
     console.log('**********************************');
-    res.send(fetchedCars.slice(1,4)) ;
+    var {condition,body,make,year,transition}=req.body;
+    var result = {};
+    result=fetchedCars;
+    if(condition != undefined)
+    result = result.filter(function(car){
+      return (car.condition === condition)
+    })
+    if(body != undefined)
+    result = result.filter(function(car){
+      return (car.body === body)
+    })
+    if(make != undefined)
+    result = result.filter(function(car){
+      return (car.make === make)
+    })
+    if(year != undefined)
+    result = result.filter(function(car){
+      return (car.year === year)
+    })
+    if(transition != undefined)
+    result = result.filter(function(car){
+      return (car.transition === transition)
+    })
+    res.send(result) ;
   });     
 };

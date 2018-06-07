@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import SearchBarHome from './SearchBarHome'
 
 class SharedLayout extends Component{
-
   
+  getFilters(filters){    
+    this.props.carsfilters(filters);
+  }
 
   renderSearchBar(){
     const path=window.location.href.split('/')[3];
@@ -28,7 +30,7 @@ class SharedLayout extends Component{
               </div>
             </div>
           </section>
-          <SearchBarHome/>
+          <SearchBarHome filters={this.getFilters.bind(this)}/>
         </div>
       );
     }

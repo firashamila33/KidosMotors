@@ -28,10 +28,11 @@ class SearchBarHome extends Component {
         this.props.fetchFiltredCars(filter);
       }
       this.props.history.push('/cars');
+      this.props.filters(filter);
         
     }
     setCarCondition(event){
-     this.setState({consition : event.target.id});
+     this.setState({condition : event.target.id});
     }
     setCarBody(event){
      this.setState({body : event.target.id});
@@ -63,8 +64,8 @@ class SearchBarHome extends Component {
                             </button>
                             <ul id="firas" className="dropdown-menu" aria-labelledby="dropdownMenu1">
                               <li>Condition</li>
-                              <li id="new_car" onClick={this.setCarCondition}>New Car (4,500)</li>
-                              <li id="used_car" onClick={this.setCarCondition} >Used Cars (6,540)</li>
+                              <li id="new" onClick={this.setCarCondition}>New Car (4,500)</li>
+                              <li id="used" onClick={this.setCarCondition} >Used Cars (6,540)</li>
                             </ul>
                           </div>
                         </div>
@@ -104,6 +105,7 @@ class SearchBarHome extends Component {
                               <li id="bmw" onClick={this.setCarMake}>BMW</li>
                               <li id="toyota" onClick={this.setCarMake}>Toyota</li>
                               <li id="mercedes" onClick={this.setCarMake}>Mercedes Benz</li>
+                              <li id="ford" onClick={this.setCarMake}>FOrd</li>
                             </ul>
                           </div>
                         </div>

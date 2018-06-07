@@ -16,7 +16,7 @@ class CarShop extends Component{
         <div className="wrap-body-inner">
             <BrowserRouter>
                 <div>
-                    <Route exact path="/cars" render={()=><CarsContainer  carsList={this.props.cars}/>} />
+                    <Route exact path="/cars" render={()=><CarsContainer filters={this.props.filters} carsList={this.props.cars}/>} />
                     <Route exact path="/cars/singlproduct" component={CarDetails} />
                 </div>
             </BrowserRouter>

@@ -23,12 +23,14 @@ class CarsContainer extends Component {
       }
       setDisplayType(displayType){
         this.setState({displayType});
+        console.log(this.props.filters);
       }
 
 
     render(){
         const table = range(1, Math.ceil(this.props.carsList.length / this.state.pageSize)+1 ,1);
-        const cars = this.props.fetchedCars.length !== 0 ? this.props.fetchedCars : this.props.carsList 
+        const cars = this.props.fetchedCars.length !== 0 ? this.props.fetchedCars : this.props.carsList;
+        const {filters} = this.props;
         return(
             <section className="m-t-lg-30 m-t-xs-0">
             <div className="row">
@@ -37,20 +39,19 @@ class CarsContainer extends Component {
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Condition
+                                    {(filters!==undefined &&filters.condition!==undefined)? filters.condition.toUpperCase() : 'Condition'}      
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     <li>Condition</li>
                                     <li>New Car (4,500)</li>
                                     <li>Used Cars (6,540)</li>
-                                    <li>Car Rental(9,960)</li>
                                 </ul>
                             </div>
                         </div>
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Body
+                                {filters!==undefined && filters.body!==undefined ? filters.body.toUpperCase() : 'Body'}     
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
                                     <li>Body</li>
@@ -66,7 +67,7 @@ class CarsContainer extends Component {
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Make
+                                {filters!==undefined && filters.make!==undefined ? filters.make.toUpperCase() : 'Make'}
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu3">
                                     <li>Make</li>
@@ -105,7 +106,7 @@ class CarsContainer extends Component {
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Year
+                                {filters!==undefined && filters.year!==undefined ? filters.year.toUpperCase() : 'Year'}
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu5">
                                     <li>Year</li>
@@ -119,7 +120,7 @@ class CarsContainer extends Component {
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Tranmission
+                                {filters!==undefined && filters.transition!==undefined ? filters.transition.toUpperCase() : 'Tranmission'}
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu6">
                                     <li>Transition</li>

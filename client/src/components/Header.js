@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import Basket from './Basket';
 import { connect } from "react-redux";
 
-
-
-
 class Header extends  Component{
     render(){
         return(
@@ -27,7 +24,6 @@ class Header extends  Component{
                             <span>My Account</span>
                             </a>
                         </li>
-                        
                         <li>
                             <a className="icon-1">
                             <i className="fa fa-cart-plus" />
@@ -76,8 +72,7 @@ class Header extends  Component{
                                     className="navbar-toggle collapsed"
                                     data-toggle="collapse"
                                     data-target="#bs-example-navbar-collapse-1"
-                                    aria-expanded="false"
-                                >
+                                    aria-expanded="false">
                                     <span className="sr-only">Toggle navigation</span>
                                     <span className="icon-bar" />
                                     <span className="icon-bar" />
