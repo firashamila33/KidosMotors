@@ -34,20 +34,31 @@ class  WhishList extends Component {
             </div>
           </div>
         </div>
-        <div className="col-sm-2 col-md-2 col-lg-2 cart-item">
-          <p className="color-green">In stock</p>
+        <div class="col-sm-2 col-md-2 col-lg-2 cart-item">
+        <p>P-09484</p>
         </div>
-        <div className="col-sm-2 col-md-2 col-lg-2 cart-item">
-          <a className="ht-btn ht-btn-default" style={{marginTop:'30px'}} onClick={()=>{this.props.addToBasket(product,1); }} >Add to cart
-          </a>
-        </div>  
+        <div class="col-sm-1 col-md-1 col-lg1 cart-item">
+        <p class="color-green">In stock</p>
+        </div>
+
+        <div class="col-sm-2 col-md-2 col-lg-2 cart-item">
+        <p>
+            <strong>${product.price}</strong>
+        </p>
+        </div>
+
+        <div class="col-sm-1 col-md-1 col-lg-1 cart-item">
+        <i class="fa fa-cart-plus cart-remove-btn" onClick={()=>{this.props.addToBasket(product,1); }}></i>
+        </div>
         
         <div className="col-sm-1 col-md-1 col-lg-1 cart-item">
           <i className="fa fa-remove cart-remove-btn" onClick={()=>this.props.removeFromWhishList(product)}/>
         </div>
         
       </div>
-      
+
+
+
       );
       
   };
@@ -72,9 +83,9 @@ class  WhishList extends Component {
               </a>
             </li>
             <li className="home-act">
-              <a href=" ">Product</a>
+              <a href=" ">Shop</a>
             </li>
-            <li className="active">Authentication</li>
+            <li className="active">WishList</li>
           </ul>
         </div>
       </div>
@@ -82,7 +93,7 @@ class  WhishList extends Component {
     <section className="block-cart m-b-lg-50 m-t-lg-30 m-t-xs-0" >
       <div>
         <div className="heading">
-          <h3>Cart</h3>
+          <h3>Wishlist</h3>
         </div>
         <div style={parentStyle}>
           <div className="display-inline-block width-100" >

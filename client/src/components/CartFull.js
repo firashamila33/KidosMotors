@@ -102,9 +102,9 @@ class  CartFull extends Component {
               </a>
             </li>
             <li className="home-act">
-              <a href=" ">Product</a>
+              <a href=" ">Shop</a>
             </li>
-            <li className="active">Authentication</li>
+            <li className="active">Wishlist</li>
           </ul>
         </div>
       </div>
