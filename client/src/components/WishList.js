@@ -34,21 +34,21 @@ class  WhishList extends Component {
             </div>
           </div>
         </div>
-        <div class="col-sm-2 col-md-2 col-lg-2 cart-item">
+        <div className="col-sm-2 col-md-2 col-lg-2 cart-item">
         <p>P-09484</p>
         </div>
-        <div class="col-sm-1 col-md-1 col-lg1 cart-item">
-        <p class="color-green">In stock</p>
+        <div className="col-sm-1 col-md-1 col-lg1 cart-item">
+        <p className="color-green">In stock</p>
         </div>
 
-        <div class="col-sm-2 col-md-2 col-lg-2 cart-item">
+        <div className="col-sm-2 col-md-2 col-lg-2 cart-item">
         <p>
             <strong>${product.price}</strong>
         </p>
         </div>
 
-        <div class="col-sm-1 col-md-1 col-lg-1 cart-item">
-        <i class="fa fa-cart-plus cart-remove-btn" onClick={()=>{this.props.addToBasket(product,1); }}></i>
+        <div className="col-sm-1 col-md-1 col-lg-1 cart-item">
+        <i className="fa fa-cart-plus cart-remove-btn" style={product.body !== undefined ? {pointerEvents: 'none'} : {}} onClick={()=>{this.props.addToBasket(product,1); }}></i>
         </div>
         
         <div className="col-sm-1 col-md-1 col-lg-1 cart-item">

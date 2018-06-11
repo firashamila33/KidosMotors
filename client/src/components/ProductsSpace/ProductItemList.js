@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
+  fetchSingleProduct,
   addToBasket,
   addToWhishList,
   removeFromWhishList
@@ -116,8 +117,8 @@ class ProductItemList extends Component {
                     }}
                   />
                 </li>
-                <li>
-                  <Link to={`/product/:${product._id}`}>
+                <li onClick={()=>this.props.fetchSingleProduct(product)}>
+                  <Link to={`/products/singlproduct`}>
                     <i className="fa fa-search" />
                   </Link>
                 </li>
@@ -134,4 +135,4 @@ function mapStateToProps({ whishlistproducts }) {
   return { whishlistproducts };
 }
 
-export default connect(mapStateToProps, { addToBasket, addToWhishList, removeFromWhishList })(ProductItemList);
+export default connect(mapStateToProps, {fetchSingleProduct, addToBasket, addToWhishList, removeFromWhishList })(ProductItemList);
