@@ -22,8 +22,8 @@ class SharedLayout extends Component{
                   <div className="banner-item banner-2x no-bg color-inher">
                     <h2 className="f-weight-300">More <strong>20 000 </strong>Vehicle advaiable</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do</p>			
-                    <Link to={"/cars"}>          
-                      <a href=" " className="ht-btn ht-btn-default ht-btn-2x m-t-lg-35">View all cars</a>                       
+                    <Link to={"/cars"} className="ht-btn ht-btn-default ht-btn-2x m-t-lg-35">          
+                      View all cars                      
                     </Link>
                   </div>
                 </div>

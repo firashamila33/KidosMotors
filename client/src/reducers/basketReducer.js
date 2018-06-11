@@ -37,11 +37,14 @@ export default function(state = [], action) {
 
     case BASKET_EDIT_ITEM:
       var newstate = [];
+      var {product,quantity} = action.payload; 
+      console.log(state);
       state.map(function(item) {
         if(item.product._id !== action.payload.product._id)
           newstate.push(item);
-        else(newstate.push({product,quantity}))
+        else(newstate.push({product,quantity}));
       });
+      
       state=newstate;
       return newstate;
 

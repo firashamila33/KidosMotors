@@ -24,7 +24,7 @@ class ProductsContainer extends React.Component{
     render(){
         const table = range(1, Math.ceil(this.props.productsList.length / this.state.pageSize)+1 ,1);
         table.map((i)=>{ 
-          return(<li key={i} className={this.state.activePage === i ? 'active' : ''}><a onClick={()=>this.setActivePage(i)} >{i}</a></li>);
+          return(<li key={i} className={this.state.activePage === i ? 'active' : ''} onClick={()=>this.setActivePage(i)}><a>{i}</a></li>);
         })
         return <div className="col-sm-8 col-md-9 col-lg-9">
             <div className="product product-grid">
@@ -99,8 +99,8 @@ class ProductsContainer extends React.Component{
                 <ul className="pagination ht-pagination">
                   <li>
                     <a aria-label="Previous" style={this.state.activePage === 1 ? {display:'none'} : {display:'block'}}>
-                      <span aria-hidden="true" >
-                        <i className="fa fa-chevron-left" onClick={()=>{this.setActivePage(this.state.activePage-1)}} />
+                      <span aria-hidden="true" onClick={()=>{this.setActivePage(this.state.activePage-1)}} >
+                        <i className="fa fa-chevron-left"  />
                       </span>
                     </a>
                   </li>
@@ -111,8 +111,8 @@ class ProductsContainer extends React.Component{
                   })}
                   <li>
                     <a aria-label="Next"  style={this.state.activePage === Math.ceil(this.props.productsList.length / this.state.pageSize) ? {display:'none'} : {display:'block'}}>
-                      <span aria-hidden="true">
-                        <i className="fa fa-chevron-right"  onClick={()=>{this.setActivePage(this.state.activePage+1)}} />
+                      <span aria-hidden="true" onClick={()=>{this.setActivePage(this.state.activePage+1)}}>
+                        <i className="fa fa-chevron-right"   />
                       </span>
                     </a>
                   </li>

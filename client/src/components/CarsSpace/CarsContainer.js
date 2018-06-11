@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 
 import {range} from 'lodash';
 import CarsList from './CarsList';
+import { fetchFiltredCars } from '../../actions'  
 import { connect } from 'react-redux' ;
 
 class CarsContainer extends Component {
@@ -23,13 +24,17 @@ class CarsContainer extends Component {
       }
       setDisplayType(displayType){
         this.setState({displayType});
-        console.log(this.props.filters);
+      }
+
+
+      getallCars(){
+        this.props.fetchFiltredCars({});
       }
 
 
     render(){
         const table = range(1, Math.ceil(this.props.carsList.length / this.state.pageSize)+1 ,1);
-        const cars = this.props.fetchedCars.length !== 0 ? this.props.fetchedCars : this.props.carsList;
+        var cars = this.props.fetchedCars.length !== 0 ? this.props.fetchedCars : this.props.carsList;
         const {filters} = this.props;
         return(
             <section className="m-t-lg-30 m-t-xs-0">
@@ -39,7 +44,7 @@ class CarsContainer extends Component {
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    {(filters!==undefined &&filters.condition!==undefined)? filters.condition.toUpperCase() : 'Condition'}      
+                                    {(filters!==undefined && filters.condition!==undefined && filters.condition!==''  )? filters.condition.toUpperCase() : 'Condition'}      
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     <li>Condition</li>
@@ -51,7 +56,7 @@ class CarsContainer extends Component {
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                {filters!==undefined && filters.body!==undefined ? filters.body.toUpperCase() : 'Body'}     
+                                {filters!==undefined && filters.body!==undefined && filters.body!=='' ? filters.body.toUpperCase() : 'Body'}     
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
                                     <li>Body</li>
@@ -67,7 +72,7 @@ class CarsContainer extends Component {
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                {filters!==undefined && filters.make!==undefined ? filters.make.toUpperCase() : 'Make'}
+                                {filters!==undefined && filters.make!==undefined && filters.make!=='' ? filters.make.toUpperCase() : 'Make'}
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu3">
                                     <li>Make</li>
@@ -106,7 +111,7 @@ class CarsContainer extends Component {
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                {filters!==undefined && filters.year!==undefined ? filters.year.toUpperCase() : 'Year'}
+                                {filters!==undefined && filters.year!==undefined && filters.year!=='' ? filters.year.toUpperCase() : 'Year'}
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu5">
                                     <li>Year</li>
@@ -120,7 +125,7 @@ class CarsContainer extends Component {
                         <div className="select-wrapper m-b-lg-15">
                             <div className="dropdown">
                                 <button className="dropdown-toggle form-item" type="button" id="dropdownMenu6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                {filters!==undefined && filters.transition!==undefined ? filters.transition.toUpperCase() : 'Tranmission'}
+                                {filters!==undefined && filters.transition!==undefined && filters.transition!=='' ? filters.transition.toUpperCase() : 'Tranmission'}
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu6">
                                     <li>Transition</li>
@@ -132,7 +137,7 @@ class CarsContainer extends Component {
                         </div>
                         <input type="text" disabled className="slider_amount m-t-lg-10" />
                         <div className="slider-range"></div>
-                        <button type="button" className="ht-btn ht-btn-default m-t-lg-30"><i className="fa fa-search"></i>Search Now</button>
+                        <button type="button" className="ht-btn ht-btn-default m-t-lg-30" onClick={()=>this.getallCars()}><i className="fa fa-search"></i>Search Now</button>   
                     </div>
                     <div className="clearfix"></div>
                     <div className="banner-item banner-bg-4 banner-1x color-inher">
@@ -264,4 +269,4 @@ function mapStateToProps({fetchedCars}){
     return {fetchedCars};
 }
 
-export default connect(mapStateToProps)(CarsContainer);
+export default connect(mapStateToProps,{fetchFiltredCars})(CarsContainer);

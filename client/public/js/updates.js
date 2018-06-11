@@ -1,5 +1,4 @@
 function updateCarousel(){
-    console.log("yeah I DID it ******************************* ");
     var $owl = $('.owl');
     $owl.each( function() {
 		var $carousel1 = $(this);

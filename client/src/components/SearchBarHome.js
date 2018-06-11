@@ -6,13 +6,13 @@ class SearchBarHome extends Component {
 
     constructor(props){
       super(props);
-      this.sate = {
-          condition : 'condition',
-          body : 'body',
-          make : 'make',
-          model : 'model',
-          year : 'year',
-          transition : 'transition'
+      this.state = {
+          condition : '',
+          body : '',
+          make : '',
+          model : '',
+          year : '',
+          transition : ''
       };
       this.setCarCondition=this.setCarCondition.bind(this);
       this.setCarBody=this.setCarBody.bind(this);
@@ -23,8 +23,11 @@ class SearchBarHome extends Component {
     buttonSearchClicked(){
       if(this.state!==null){
         var {condition,body,make,model,year,transition}=this.state;
+        console.log(this.state);
+        
         var filter = {};
-        filter = {condition,body,make,model,year,transition};        
+        filter = {condition,body,make,model,year,transition};  
+        console.log(filter);     
         this.props.fetchFiltredCars(filter);
       }
       this.props.history.push('/cars');

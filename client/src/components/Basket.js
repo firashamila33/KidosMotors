@@ -21,7 +21,7 @@ class Basket extends Component {
           return'0';
       }
       var total=0;
-       this.props.basketproducts.map(e=>total=total+(parseInt(e.product.price)*e.quantity));
+       this.props.basketproducts.map(e=>total=total+(parseInt(e.product.price,10)*e.quantity));
        return total;
     }
 

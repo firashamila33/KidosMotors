@@ -48,7 +48,7 @@ class ProductDetails extends React.Component {
                                         <input id="quantity" type="text" className="form-item input-qtl" defaultValue="1" ref={(input) => this.textInput = input}/>
                                     </div>
                                     <a className="ht-btn ht-btn-default"  onClick={()=>{
-                                    this.props.addToBasket(this.props.selectedProduct,parseInt(this.textInput.value));
+                                    this.props.addToBasket(this.props.selectedProduct,parseInt(this.textInput.value,10));
                                     }} >Add to cart</a>
                                     <a href=" " className="ht-btn bg-gray-c bg1-gray-4"><i className="fa fa-heart-o"></i></a>
                                     <a href=" " className="ht-btn bg-gray-c bg1-gray-4"><i className="fa fa-signal"></i></a>

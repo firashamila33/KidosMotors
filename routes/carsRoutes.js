@@ -11,24 +11,25 @@ module.exports = app => {
     console.log('**********************************');
     var {condition,body,make,year,transition}=req.body;
     var result = {};
+
     result=fetchedCars;
-    if(condition != undefined)
+    if(condition != undefined && condition !=='')
     result = result.filter(function(car){
       return (car.condition === condition)
     })
-    if(body != undefined)
+    if(body != undefined && body !=='')
     result = result.filter(function(car){
       return (car.body === body)
     })
-    if(make != undefined)
+    if(make != undefined && make !=='')
     result = result.filter(function(car){
       return (car.make === make)
     })
-    if(year != undefined)
+    if(year != undefined && year !=='')
     result = result.filter(function(car){
       return (car.year === year)
     })
-    if(transition != undefined)
+    if(transition != undefined && transition !=='')
     result = result.filter(function(car){
       return (car.transition === transition)
     })
