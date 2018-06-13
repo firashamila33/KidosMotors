@@ -8,7 +8,7 @@ import CarsContainer from './CarsContainer';
 
 class CarShop extends Component{
     componentDidMount(){
-        window.reRenderRangeSlider();
+        
         this.props.fetchCars();
     }
    render(){

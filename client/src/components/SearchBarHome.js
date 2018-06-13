@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux'
-import { fetchFiltredCars } from '../actions'  
-import { withRouter } from 'react-router'
+import {connect} from 'react-redux';
+import { fetchFiltredCars } from '../actions';  
+import { withRouter } from 'react-router';
+import $ from 'jquery';
 class SearchBarHome extends Component {
 
     constructor(props){
@@ -12,7 +13,8 @@ class SearchBarHome extends Component {
           make : '',
           model : '',
           year : '',
-          transition : ''
+          transition : '',
+          priceRange:''
       };
       this.setCarCondition=this.setCarCondition.bind(this);
       this.setCarBody=this.setCarBody.bind(this);
@@ -20,35 +22,41 @@ class SearchBarHome extends Component {
       this.setCarYear=this.setCarYear.bind(this);
       this.setCarTransition=this.setCarTransition.bind(this);
     }
-    buttonSearchClicked(){
-      if(this.state!==null){
-        var {condition,body,make,model,year,transition}=this.state;
-        console.log(this.state);
-        
-        var filter = {};
-        filter = {condition,body,make,model,year,transition};  
-        console.log(filter);     
-        this.props.fetchFiltredCars(filter);
-      }
-      this.props.history.push('/cars');
-      this.props.filters(filter);
-        
+  buttonSearchClicked() {
+    if (this.state !== null) {
+      var { condition, body, make, model, year, transition, priceRange } = this.state;
+      var filter = {};
+      priceRange = $("#priceslider").val();
+
+      // priceRange = {
+      //   range: $("#priceslider").val(),
+      //   width: $('#spanrange')[0].childNodes[0].style.width,
+      //   left: $('#spanrange')[0].childNodes[0].style.left
+      // }
+      filter = { condition, body, make, model, year, transition, priceRange };
+      this.props.fetchFiltredCars(filter);
     }
-    setCarCondition(event){
-     this.setState({condition : event.target.id});
-    }
-    setCarBody(event){
-     this.setState({body : event.target.id});
-    }
-    setCarMake(event){
-     this.setState({make : event.target.id});
-    }
-    setCarYear(event){
-     this.setState({year : event.target.id});
-    }
-    setCarTransition(event){
-     this.setState({transition : event.target.id});
-    }
+
+
+    this.props.history.push('/cars');
+    this.props.filters(filter);
+
+  }
+  setCarCondition(event) {
+    this.setState({ condition: event.target.id });
+  }
+  setCarBody(event) {
+    this.setState({ body: event.target.id });
+  }
+  setCarMake(event) {
+    this.setState({ make: event.target.id });
+  }
+  setCarYear(event) {
+    this.setState({ year: event.target.id });
+  }
+  setCarTransition(event) {
+    this.setState({ transition: event.target.id });
+  }
     
 
     render(){
@@ -66,7 +74,6 @@ class SearchBarHome extends Component {
                               Condition
                             </button>
                             <ul id="firas" className="dropdown-menu" aria-labelledby="dropdownMenu1">
-                              <li>Condition</li>
                               <li id="new" onClick={this.setCarCondition}>New Car (4,500)</li>
                               <li id="used" onClick={this.setCarCondition} >Used Cars (6,540)</li>
                             </ul>
@@ -80,7 +87,6 @@ class SearchBarHome extends Component {
                               Body
                             </button>
                             <ul  className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <li>Body</li>
                               <li id="sedan" onClick={this.setCarBody} >Sedan</li>
                               <li id="suv" onClick={this.setCarBody}>SUV</li>
                               <li id="truck" onClick={this.setCarBody}>Truck</li>
@@ -98,7 +104,6 @@ class SearchBarHome extends Component {
                               Make
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenu3">
-                              <li>Make</li>
                               <li id="ford" onClick={this.setCarMake} >Ford</li>
                               <li id="huyndai" onClick={this.setCarMake}>Huyndai</li>
                               <li id="nissan" onClick={this.setCarMake}>Nissan</li>
@@ -120,7 +125,6 @@ class SearchBarHome extends Component {
                               Model
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenu4">
-                              <li>Model</li>
                               <li>Versa</li>
                               <li>Cruze</li>
                               <li>Malibu</li>
@@ -142,7 +146,6 @@ class SearchBarHome extends Component {
                               Year
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenu5">
-                              <li>Year</li>
                               <li id="2016" onClick={this.setCarYear}>2016</li>
                               <li id="2015" onClick={this.setCarYear}>2015</li>
                               <li id="2014" onClick={this.setCarYear}>2014</li>
@@ -159,7 +162,6 @@ class SearchBarHome extends Component {
                               Transition
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenu6">
-                              <li>Transition</li>
                               <li id="automatic" onClick={this.setCarTransition}>Automatic</li>
                               <li id="manual" onClick={this.setCarTransition}>Manual</li>
                               <li id="semi_automatic" onClick={this.setCarTransition}>Semi-automatic</li>
@@ -170,8 +172,8 @@ class SearchBarHome extends Component {
                     </div>
                   </div>
                   <div className="col-sm-5 col-md-3 col-lg-3">
-                    <input type="text" disabled className="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10" />
-                    <div className="slider-range"></div>
+                    <input id="priceslider" type="text" disabled className="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10"/>
+                    <div id='spanrange' className="slider-range"></div>
                   </div>
                   <div className="col-sm-3 col-md-2 col-lg-2 p-r-sm-0 pull-right pull-left-xs">
                     <button type="button" className="ht-btn ht-btn-default m-t-lg-30 m-t-sm-10 pull-right pull-left-xs" onClick={this.buttonSearchClicked.bind(this)}><i className="fa fa-search"></i> Search</button>

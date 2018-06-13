@@ -46,7 +46,7 @@ module.exports = [
         body: 'truck',
         make: 'ford',
         year:'2016',
-        transition: 'masemi_automaticnual'
+        transition: 'semi_automatic'
     },
     {
         _id: '524',
