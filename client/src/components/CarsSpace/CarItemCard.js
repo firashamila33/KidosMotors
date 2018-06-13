@@ -9,7 +9,7 @@ class CarItemCard extends Component{
     constructor(props) {
         super(props);
         this.state={isInWhishList:false,
-                    car:this.props.car,
+                    car:props.car,
                     isHovered:false
                     };
     };
@@ -72,7 +72,7 @@ class CarItemCard extends Component{
                     <i className="fa fa-clock-o" />{car.year}
                     </li>
                     
-                    <li onClick={()=>this.props.fetchSingleCar(this.props.car)}>
+                    <li onClick={()=>this.props.fetchSingleCar(car)}>
                         <Link to={`/cars/singlproduct`}>
                         <i className="fa fa-search" />View
                         </Link>

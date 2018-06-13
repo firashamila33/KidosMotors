@@ -1,7 +1,7 @@
 import React,{Component} from 'react' ;
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {fetchSingleProduct, addToWhishList,removeFromWhishList } from '../../actions';
+import {fetchSingleCar, addToWhishList,removeFromWhishList } from '../../actions';
 
 class CarItemList extends Component{
 
@@ -9,7 +9,7 @@ class CarItemList extends Component{
         super(props);
         this.state={
                 isInWhishList:false,
-                car:this.props.car,
+                car:props.car,
                 isHovered:false,
             };
     }; 
@@ -62,11 +62,11 @@ class CarItemList extends Component{
                 <div className="row">
                     <div className="col-sm-12 col-md-5 col-lg-5">
                     <a className="product-img">
-                        <img src={`${process.env.PUBLIC_URL}/images/${this.props.car.imageName}`} alt="" />
+                        <img src={`${process.env.PUBLIC_URL}/images/${car.imageName}`} alt="" />
                     </a>
                     </div>
                     <ul className="absolute-caption">
-                             <li onClick={()=>this.props.fetchSingleProduct(this.props.car)}>
+                             <li onClick={()=>this.props.fetchSingleCar(car)}>
                                 <Link to={`/cars/singlproduct`}>
                                 <i className="fa fa-search" />View
                                 </Link>
@@ -84,7 +84,7 @@ class CarItemList extends Component{
                         <div className="product-caption">
                             <h5 className="product-name" style={{backgroundColor:'#f5f5f5'}}>
                             <a>
-                                {this.props.car.name}
+                                {car.name}
                             </a>
                             </h5>
                             <ul className="rating">
@@ -94,7 +94,7 @@ class CarItemList extends Component{
                                 <li><i className="fa fa-star"></i></li>
                                 <li><i className="fa fa-star"></i></li>
                             </ul>
-                            <b className="product-price color-red">${this.props.car.price},000</b>
+                            <b className="product-price color-red">${car.price},000</b>
                             <p className="product-txt m-t-lg-10">Nunc facilisis sagittis ullamcorper. Proin lectulputate</p>
                             <ul className="static-caption m-t-lg-20">
                                 <li><i className="fa fa-clock-o"></i>{car.year}</li>
@@ -116,4 +116,4 @@ class CarItemList extends Component{
     return { whishlistproducts};
 }
 
-export default connect(mapStateToProps,{ fetchSingleProduct, addToWhishList, removeFromWhishList})(CarItemList) ;
+export default connect(mapStateToProps,{ fetchSingleCar, addToWhishList, removeFromWhishList})(CarItemList) ;

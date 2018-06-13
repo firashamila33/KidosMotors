@@ -18,6 +18,7 @@ export function fetchSingleProduct(product){
 }
 
 export function fetchSingleCar(product){
+  console.log(product)
   return(
     {
       type : SELECTED_CAR,
