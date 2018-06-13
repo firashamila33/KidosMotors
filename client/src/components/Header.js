@@ -104,11 +104,6 @@ class Header extends  Component{
                                         Sell A Car
                                         </Link>
                                     </li>
-                                    <li className="dropdown">
-                                        <Link to={"/contactus"} className="dropdown-toggle">
-                                        CONTACT US
-                                        </Link>
-                                    </li>
                                 </ul>
                                 </div>
                             </div>

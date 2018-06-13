@@ -33,13 +33,15 @@ class SearchBarHome extends Component {
       //   width: $('#spanrange')[0].childNodes[0].style.width,
       //   left: $('#spanrange')[0].childNodes[0].style.left
       // }
+
+      
       filter = { condition, body, make, model, year, transition, priceRange };
       this.props.fetchFiltredCars(filter);
     }
 
 
     this.props.history.push('/cars');
-    this.props.filters(filter);
+    this.props.filters(filter);         
 
   }
   setCarCondition(event) {

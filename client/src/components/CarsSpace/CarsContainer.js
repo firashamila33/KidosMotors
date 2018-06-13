@@ -87,8 +87,7 @@ class CarsContainer extends Component {
         var {fetchedCars, carsList}=this.props;
         var cars = fetchedCars.length !== 0 ? fetchedCars : carsList;
         
-        if (fetchedCars.length === 0 && buttonSearchClicked) {
-            
+        if (fetchedCars.length === 0 && buttonSearchClicked || fetchedCars.length === 0 &&  !buttonSearchClicked  && this.props.filters.priceRange !==undefined ) {
             return <div className="banner-item banner-2x no-bg ">
                 <h2 className="f-weight-300"><i className="fa fa-search m-r-lg-10"> </i>No RESULTS</h2>
                 <a className="ht-btn ht-btn-default ht-btn-2x m-t-lg-35" onClick={()=>this.viewAllCars()}>
@@ -96,6 +95,8 @@ class CarsContainer extends Component {
                         </a>
             </div>;
         }
+
+        
         else {
             return <CarsList displayType={displayType} carslist={cars.slice((activePage - 1) * pageSize, (activePage - 1) * pageSize + pageSize)} />
         }
@@ -117,8 +118,18 @@ class CarsContainer extends Component {
 
         const { condition, body, make, year, transition, priceRange } = filters;
         
+        /**if I am in cars container And I was in home containers , and I already had a filter then the slider should follow the previous slider 
+         *  filter that was dispatched to state */
+        if (priceRange !== undefined && priceRange!=undefined && priceRange !== '' && buttonSearchClicked) {
+            var priceIntervall=this.state.priceRange;
+            var min = 1000 * priceIntervall.slice(1, priceIntervall.indexOf(","));
+            var max = 1000 * priceIntervall.slice(priceIntervall.indexOf("-") + 3, priceIntervall.indexOf(",", priceIntervall.indexOf("-")));
+            window.reRenderRangeSliderOther(min, max);
+        }
 
-        if (priceRange !== undefined && priceRange!=undefined && priceRange !== '') {
+
+        /**If I was in cars containers and I did not changed yet the slider in cars container then the slider should be as in filters */
+        if (priceRange !== undefined && priceRange!=undefined && priceRange !== '' && !buttonSearchClicked) {
             var min = 1000 * priceRange.slice(1, priceRange.indexOf(","));
             var max = 1000 * priceRange.slice(priceRange.indexOf("-") + 3, priceRange.indexOf(",", priceRange.indexOf("-")));
             window.reRenderRangeSliderOther(min, max);
