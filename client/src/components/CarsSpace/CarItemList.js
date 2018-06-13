@@ -97,8 +97,8 @@ class CarItemList extends Component{
                             <b className="product-price color-red">${this.props.car.price},000</b>
                             <p className="product-txt m-t-lg-10">Nunc facilisis sagittis ullamcorper. Proin lectulputate</p>
                             <ul className="static-caption m-t-lg-20">
-                                <li><i className="fa fa-clock-o"></i>2016</li>
-                                <li><i className="fa fa-tachometer"></i>Automatic</li>
+                                <li><i className="fa fa-clock-o"></i>{car.year}</li>
+                                <li><i className="fa fa-tachometer"></i>{car.transition}</li>
                                 <li><i className="fa fa-road"></i>13,000</li>
                                 
                             </ul>

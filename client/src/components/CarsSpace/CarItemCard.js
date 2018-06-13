@@ -62,14 +62,14 @@ class CarItemCard extends Component{
                 <div className="product-caption">
                     <h4 className="product-name">
                     <a>
-                    {car.name} / <b>NEW</b>
+                    {car.name} / <b>{car.condition.toUpperCase()}</b>
                     </a>
                     <span className="f-18"> ${car.price},000</span>
                     </h4>
                 </div>
                 <ul className="absolute-caption">
                     <li>
-                    <i className="fa fa-clock-o" />2016
+                    <i className="fa fa-clock-o" />{car.year}
                     </li>
                     
                     <li onClick={()=>this.props.fetchSingleCar(this.props.car)}>

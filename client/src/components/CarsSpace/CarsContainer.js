@@ -16,7 +16,7 @@ class CarsContainer extends Component {
             activePage: 1,
             pageSize: 6,
             displayType: 'cards',
-            fetchedCars: {},
+            fetchedCars: props.fetchedCars,
             renderedCars :{},
             buttonSearchClicked: false,
             condition: '',
@@ -40,13 +40,13 @@ class CarsContainer extends Component {
             var { condition, body, make, model, year, transition, priceRange } = this.state;
             var filter = {};
             priceRange = $("#priceslider").val();
+            this.setState({priceRange});
             filter = { condition, body, make, model, year, transition, priceRange };
             this.props.fetchFiltredCars(filter);
             
         }
         else (this.getallCars());
         this.setState({buttonSearchClicked : true});
-        console.log(this.state);
     }
 
     setCarCondition(event) {
@@ -78,23 +78,26 @@ class CarsContainer extends Component {
         this.props.fetchFiltredCars({});
     }
     viewAllCars(){
-        this.setState({buttonSearchClicked : false})
+        this.setState({buttonSearchClicked : false});
+        this.setState({fetchedCars : {}});
     }
 
     renderCars() {
-        var cars = this.props.fetchedCars.length !== 0 ? this.props.fetchedCars : this.props.carsList;
-        var { fetchedCars } = this.props;
-        if (fetchedCars.length == 0 && this.state.buttonSearchClicked) {
+        var {buttonSearchClicked, pageSize, activePage, displayType} = this.state;
+        var {fetchedCars, carsList}=this.props;
+        var cars = fetchedCars.length !== 0 ? fetchedCars : carsList;
+        
+        if (fetchedCars.length === 0 && buttonSearchClicked) {
             
             return <div className="banner-item banner-2x no-bg ">
-                <h2 className="f-weight-300"><i className="fa fa-search m-r-lg-10"> </i>No Result</h2>
+                <h2 className="f-weight-300"><i className="fa fa-search m-r-lg-10"> </i>No RESULTS</h2>
                 <a className="ht-btn ht-btn-default ht-btn-2x m-t-lg-35" onClick={()=>this.viewAllCars()}>
                     View all cars
                         </a>
             </div>;
         }
         else {
-            return <CarsList displayType={this.state.displayType} carslist={cars.slice((this.state.activePage - 1) * this.state.pageSize, (this.state.activePage - 1) * this.state.pageSize + this.state.pageSize)} />
+            return <CarsList displayType={displayType} carslist={cars.slice((activePage - 1) * pageSize, (activePage - 1) * pageSize + pageSize)} />
         }
 
 
@@ -105,21 +108,21 @@ class CarsContainer extends Component {
 
     
     render() {
-        const table = range(1, Math.ceil(this.props.carsList.length / this.state.pageSize) + 1, 1);
+        var {fetchedCars, carsList, filters}= this.props;
+        var {pageSize, buttonSearchClicked}= this.state
+        const table = range(1, Math.ceil(carsList.length / pageSize) + 1, 1);
         
-        var cars = this.props.fetchedCars.length !== 0 ? this.props.fetchedCars : this.props.carsList;
-        if(this.props.fetchedCars.length == 0 && this.state.buttonSearchClicked) cars= {} ;
-        
-        const { condition, body, make, year, transition, priceRange } = this.props.filters;
-        const { filters } = this.props;
-        if (priceRange !== undefined) {
-            console.log(priceRange.slice(1, priceRange.indexOf(",")));
-            console.log(priceRange.slice(priceRange.indexOf("-") + 3, priceRange.indexOf(",", priceRange.indexOf("-"))));
+        var cars = fetchedCars.length !== 0 ? fetchedCars : carsList;
+        if(fetchedCars.length === 0 && buttonSearchClicked) cars= {} ;
 
+        const { condition, body, make, year, transition, priceRange } = filters;
+        
+
+        if (priceRange !== undefined && priceRange!=undefined && priceRange !== '') {
             var min = 1000 * priceRange.slice(1, priceRange.indexOf(","));
             var max = 1000 * priceRange.slice(priceRange.indexOf("-") + 3, priceRange.indexOf(",", priceRange.indexOf("-")));
             window.reRenderRangeSliderOther(min, max);
-        }else(window.reRenderRangeSlider())
+        }else if (!buttonSearchClicked){window.reRenderRangeSlider()}
         return (
             <section className="m-t-lg-30 m-t-xs-0">
                 <div className="row">
@@ -128,7 +131,7 @@ class CarsContainer extends Component {
                             <div className="select-wrapper m-b-lg-15">
                                 <div className="dropdown">
                                     <button className="dropdown-toggle form-item" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        {(filters !== undefined && condition !== undefined && condition !== '') ? condition.toUpperCase() : 'Condition'}
+                                        {(filters !== undefined && condition !== undefined && condition !== '' ) ? condition.toUpperCase() : 'Condition'}
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <li id="" onClick={this.setCarCondition}>Any State</li>
@@ -220,7 +223,7 @@ class CarsContainer extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <input type="text" disabled className="slider_amount m-t-lg-10" value={filters != undefined && priceRange != undefined ? priceRange.range : '$60,000 - $130,000'} />
+                            <input id="priceslider" type="text" disabled className="slider_amount m-t-lg-10" value={filters !== undefined && priceRange !== undefined ? priceRange.range : '$60,000 - $130,000'} />
                             <div id="spanrange" className="slider-range"></div>
                             <button type="button" className="ht-btn ht-btn-default m-t-lg-30" onClick={() => this.buttonSearchClicked()}><i className="fa fa-search"></i>Search Now</button>
                         </div>
@@ -235,7 +238,7 @@ class CarsContainer extends Component {
                     <div className="col-sm-7 col-md-8 col-lg-9">
                         <div className="product product-grid product-grid-2 car">
                             <div className="heading heading-2 m-b-lg-0">
-                                <h3 className="p-l-lg-20">New Cars (45)</h3>
+                                <h3 className="p-l-lg-20">Cars ({cars.length})</h3>
                             </div>
                             <div className="product-filter p-t-xs-20 p-l-xs-20">
                                 <div className="m-b-xs-10 pull-left">
@@ -247,22 +250,7 @@ class CarsContainer extends Component {
                                     </a>
                                 </div>
                                 <div className="pull-right">
-                                    <div className="m-b-xs-10 m-r-lg-20 pull-left">
-                                        <label className="pull-left p-t-lg-10 m-r-lg-5"><i className="fa fa-sort-alpha-asc"></i>Filter : </label>
-                                        <div className="select-wrapper pull-left">
-                                            <div className="dropdown pull-left">
-                                                <button className="dropdown-toggle form-item w-130" type="button" id="dropdownMenu7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                    Latest
-                                            </button>
-                                                <ul className="dropdown-menu" aria-labelledby="dropdownMenu7">
-                                                    <li>Offer</li>
-                                                    <li>Best Seller</li>
-                                                    <li>Featured</li>
-                                                    <li>Latest</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div className="pull-left">
                                         <label className="pull-left p-t-lg-10 m-r-lg-5"><i className="fa fa-sort-alpha-asc"></i>Show : </label>
                                         <div className="select-wrapper pull-left">
@@ -295,18 +283,7 @@ class CarsContainer extends Component {
                             </div>
                             <div className="clearfix"></div>
                             <div className="row">
-
                                 {this.renderCars()}
-
-                                {/* <CarsList displayType={this.state.displayType} carslist={cars.slice((this.state.activePage - 1) * this.state.pageSize, (this.state.activePage - 1) * this.state.pageSize + this.state.pageSize)} /> */}
-
-                                {/* <div className="banner-item banner-2x no-bg ">
-                                    <h2 className="f-weight-300"><i className="fa fa-search m-r-lg-10"> </i>No Result</h2>
-                                    <a className="ht-btn ht-btn-default ht-btn-2x m-t-lg-35">
-                                        View all cars
-                                    </a>
-                                </div> */}
-
                             </div>
                             <nav aria-label="Page navigation">
                                 <ul className="pagination ht-pagination">

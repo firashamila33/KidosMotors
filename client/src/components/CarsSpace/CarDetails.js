@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 
 class CarDetails extends React.Component {
@@ -8,19 +8,20 @@ class CarDetails extends React.Component {
 	componentDidMount(){
 		console.log(this.props.selectedCar);
 	}
-    
+
+	
     render(){
 		console.log(this.props.selectedCar);
-		var {name,price,imageName}=this.props.selectedCar;
+		var {name,price,imageName,condition}=this.props.selectedCar;
         return (
             <div className="wrap-body-inner">
 						<div className="hidden-xs">
 							<div className="row">
 								<div className="col-lg-6">
 									<ul className="ht-breadcrumb pull-left">
-									<li className="home-act"><a href=""><i className="fa fa-home"></i></a></li>
-									<li className="home-act"><a href="">Product</a></li>
-									<li className="home-act"><a href="">Tyres & Wheels</a></li>
+									<li className="home-act"><a><i className="fa fa-home"></i></a></li>
+									<li className="home-act"><Link to={"/cars"}>Cars</Link></li>
+									
 									<li className="active">{name}</li>
 									</ul>
 								</div>
@@ -35,7 +36,7 @@ class CarDetails extends React.Component {
 							<div className="product_detail no-bg p-lg-0">
 								<h3 className="product-name color1-f">{name} / 
 									<span className="product-price color-red">${price}000.00 <i className="color-9 color1-9"> ( Plus Taxes & Licensing ) </i></span>
-									<span className="car-status m-l-lg-10">USED</span>
+									<span className="car-status m-l-lg-10">{condition !==undefined ? condition.toUpperCase() : ''}</span>
 								</h3>
 								<div className="row">
 									<div className="col-md-7 col-lg-8">
@@ -261,6 +262,6 @@ function mapStateToProps({selectedCar}) {
     return { selectedCar };
 }
 
-export default connect(mapStateToProps)(CarDetails) ;
+export default connect(mapStateToProps)(withRouter(CarDetails)) ;
 
 

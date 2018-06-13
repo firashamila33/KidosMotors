@@ -13,7 +13,7 @@ class CarShop extends Component{
     }
    render(){
     return(
-        <div className="wrap-body-inner">
+        <div className="wrap-body-inner" style={{minHeight: '1200px'}}>
             <BrowserRouter>
                 <div>
                     <Route exact path="/cars" render={()=><CarsContainer filters={this.props.filters} carsList={this.props.cars}/>} />

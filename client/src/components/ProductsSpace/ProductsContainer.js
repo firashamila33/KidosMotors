@@ -41,24 +41,7 @@ class ProductsContainer extends React.Component{
                   </a>
                 </div>
                 <div className="pull-right">
-                  <div className="m-b-xs-10 m-r-lg-20 pull-left">
-                    <div className="select-wrapper">
-                      <label>
-                        <i className="fa fa-sort-alpha-asc" />Filter :{" "}
-                      </label>
-                      <div className="dropdown pull-left">
-                        <button className="dropdown-toggle form-item w-130" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Latest
-                        </button>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li>Offer</li>
-                          <li>Best Seller</li>
-                          <li>Featured</li>
-                          <li>Latest</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                 
                   <div className="pull-left">
                     <div className="select-wrapper">
                       <label>
