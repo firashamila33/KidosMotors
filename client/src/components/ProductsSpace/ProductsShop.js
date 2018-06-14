@@ -28,7 +28,7 @@ class ProductsShop extends Component{
     render(){
        
         return(
-            <div className="wrap-body-inner">
+            <div className="wrap-body-inner" style={{minHeight: '1200px'}}>
                 
                 <section className="m-t-lg-30 m-t-xs-0">
                         <div className="row">

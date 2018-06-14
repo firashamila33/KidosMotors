@@ -21,7 +21,7 @@ function renderCarList(car){
      
  }
 
-const CarList = (props)=>{
+const CarsList = (props)=>{
     if (props.displayType ==='cards')
         return(
             <div>
@@ -39,4 +39,4 @@ const CarList = (props)=>{
 
 }
 
-export default CarList;
+export default CarsList;

@@ -13,3 +13,4 @@ export const WHISHLIST_REMOVE_PRODUCT='whishlist_remove_product';
 export const SELECTED_PRODUCT='selected_product';
 export const SELECTED_CAR='selected_car';
 export const FETCH_FILTRED_CARS='fetch_filtred_cars';
+export const FILTER_ACTIVATION='filter_activation';

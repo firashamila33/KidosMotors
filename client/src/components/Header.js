@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import Basket from './Basket';
+import {turnOffHomefilter} from '../actions';
 import { connect } from "react-redux";
 
 class Header extends  Component{
@@ -89,7 +90,7 @@ class Header extends  Component{
                                         HOME
                                         </Link>
                                     </li>
-                                    <li className="dropdown"> 
+                                    <li className="dropdown" onClick={()=>this.props.turnOffHomefilter()}> 
                                         <Link to={"/cars"} className="dropdown-toggle">
                                         CARS LISTING
                                         </Link>
@@ -141,5 +142,5 @@ function mapStateToProps({ whishlistproducts }) {
     return { whishlistproducts };
   }
   
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps,{turnOffHomefilter})(Header);
 

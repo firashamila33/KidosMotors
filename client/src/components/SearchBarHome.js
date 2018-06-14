@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { fetchFiltredCars } from '../actions';  
+import { fetchFiltredCars,turnOnHomefilter  } from '../actions';  
 import { withRouter } from 'react-router';
 import $ from 'jquery';
 class SearchBarHome extends Component {
@@ -37,6 +37,7 @@ class SearchBarHome extends Component {
       
       filter = { condition, body, make, model, year, transition, priceRange };
       this.props.fetchFiltredCars(filter);
+      this.props.turnOnHomefilter();
     }
 
 
@@ -76,8 +77,8 @@ class SearchBarHome extends Component {
                               Condition
                             </button>
                             <ul id="firas" className="dropdown-menu" aria-labelledby="dropdownMenu1">
-                              <li id="new" onClick={this.setCarCondition}>New Car (4,500)</li>
-                              <li id="used" onClick={this.setCarCondition} >Used Cars (6,540)</li>
+                              <li id="new" onClick={this.setCarCondition}>New Cars</li>
+                              <li id="used" onClick={this.setCarCondition} >Used Cars</li>
                             </ul>
                           </div>
                         </div>
@@ -127,7 +128,7 @@ class SearchBarHome extends Component {
                               Model
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenu4">
-                              <li>Versa</li>
+                              {/* <li>Versa</li>
                               <li>Cruze</li>
                               <li>Malibu</li>
                               <li>Civic</li>
@@ -136,7 +137,7 @@ class SearchBarHome extends Component {
                               <li>Optima</li>
                               <li>CX-5</li>
                               <li>3 Serie</li>
-                              <li>Atima</li>
+                              <li>Atima</li> */}
                             </ul>
                           </div>
                         </div>
@@ -192,4 +193,4 @@ class SearchBarHome extends Component {
 
 }
 
-export default connect(null,{fetchFiltredCars})(withRouter(SearchBarHome));
+export default connect(null,{fetchFiltredCars, turnOnHomefilter})(withRouter(SearchBarHome));

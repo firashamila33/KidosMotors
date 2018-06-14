@@ -49,7 +49,7 @@ class ProductsContainer extends React.Component{
                       </label>
                       <div className="dropdown pull-left">
                         <button className="dropdown-toggle form-item w-80" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          6
+                          {this.state.pageSize}
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
                           <li>

@@ -7,8 +7,8 @@ const  Sell = () => {
                 <div className="row">
                     <div className="col-lg-6">
                         <ul className="ht-breadcrumb pull-left">
-                        <li className="home-act"><a href=" "><i className="fa fa-home"></i></a></li>
-                        <li className="home-act"><a href=" ">Car</a></li>
+                        <li className="home-act"><a  ><i className="fa fa-home"></i></a></li>
+                        <li className="home-act"><a  >Car</a></li>
                         <li className="active">Sell a car</li>
                         </ul>
                     </div>
@@ -88,7 +88,7 @@ const  Sell = () => {
                                             <i className="remove-img fa fa-remove"></i>
                                         </div>
                                     </div>
-                                    <a href=" " className="ht-btn ht-btn-default"><i className="fa fa-plus"></i>Add image</a>
+                                    <a  className="ht-btn ht-btn-default"><i className="fa fa-plus"></i>Add image</a>
                                 </div>
                                 <div className="m-b-lg-20">
                                     <div className="heading-1">
@@ -498,10 +498,10 @@ const  Sell = () => {
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
                                 </p>
                                 <ul className="list-default">
-                                    <li><a href=" "><i className="fa fa-angle-right"></i>Lorem ipsum dolor sit amet</a></li>
-                                    <li><a href=" "><i className="fa fa-angle-right"></i>Lorem ipsum dolor sit amet</a></li>
-                                    <li><a href=" "><i className="fa fa-angle-right"></i>Lorem ipsum dolor sit amet</a></li>
-                                    <li><a href=" "><i className="fa fa-angle-right"></i>Lorem ipsum dolor sit amet</a></li>
+                                    <li><a  ><i className="fa fa-angle-right"></i>Lorem ipsum dolor sit amet</a></li>
+                                    <li><a  ><i className="fa fa-angle-right"></i>Lorem ipsum dolor sit amet</a></li>
+                                    <li><a  ><i className="fa fa-angle-right"></i>Lorem ipsum dolor sit amet</a></li>
+                                    <li><a  ><i className="fa fa-angle-right"></i>Lorem ipsum dolor sit amet</a></li>
                                 </ul>
                             </div>
                         </div>

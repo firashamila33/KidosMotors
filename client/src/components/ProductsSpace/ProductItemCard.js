@@ -8,12 +8,12 @@ class ProductItemCard extends Component{
     constructor(props) {
         super(props);
         this.state={isInWhishList:false,
-                    product:this.props.product,
+                    product:props.product,
                     isHovered:false
                     };
     };
       
-
+    /**To add or remove product from wishList */
     ToggleProductWhishlist(event){
         var product = JSON.parse(event.target.id);
         if(!this.state.isInWhishList){
@@ -26,7 +26,7 @@ class ProductItemCard extends Component{
             
         }
     }
-
+    /**fcheck fore each product if it belongs to wishlist or not */
     componentDidMount(){
         var product= this.props.product;
         
@@ -34,11 +34,11 @@ class ProductItemCard extends Component{
             this.setState({isInWhishList:true})
         }
     }
-
+    /**for heart icon style */
     mouseHover(event){
         this.setState({isHovered:true});  
     }
-
+    /**for heart icon style */
     mouseUnHover(event){
         this.setState({isHovered:false});  
     }

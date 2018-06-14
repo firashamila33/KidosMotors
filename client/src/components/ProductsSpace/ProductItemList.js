@@ -12,7 +12,7 @@ class ProductItemList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { isInWhishList: false, product: this.props.product };
+    this.state = { isInWhishList: false, product: props.product, isHovered:false };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
@@ -41,11 +41,22 @@ class ProductItemList extends Component {
     }
   }
 
+  mouseHover(event){
+    this.setState({isHovered:true});  
+  }
+
+  mouseUnHover(event){
+      this.setState({isHovered:false});  
+  }
+
   render() {
-    const heartStyle = {
-      color: '#d11717',
-      fontWeight: 'bold'
-    };
+    var heartStyle = {};
+        if(!this.state.isHovered){
+            heartStyle = {
+                color: '#d11717',
+                fontWeight: 'bold'
+            };
+        }
     const {product} = this.props;
     return (
       <div className="product-item hover-img">
@@ -100,14 +111,12 @@ class ProductItemList extends Component {
               </a>
               <ul className="absolute-caption">
                 <li>
-                  <i
-                    id={JSON.stringify(product)}
-                    className={
-                      this.state.isInWhishList ? "fa fa-heart" : "fa fa-heart-o"
-                    }
-                    style={heartStyle}
+                    <i id={JSON.stringify(product)} className={this.state.isInWhishList ? "fa fa-heart" : "fa fa-heart-o"} 
+                    style={heartStyle} 
                     onClick={this.ToggleProductWhishlist.bind(this)}
-                  />
+                    onMouseEnter={this.mouseHover.bind(this)}
+                    onMouseLeave={this.mouseUnHover.bind(this)}
+                    />
                 </li>
                 <li>
                   <i
