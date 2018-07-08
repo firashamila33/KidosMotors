@@ -16,7 +16,8 @@ const carSchema = new Schema({
     mileage: Number,
     warranty: Number,
     description: String,
-    features: [String]
+    features: [String],
+    state:String
 });
 
 mongoose.model('cars', carSchema);
