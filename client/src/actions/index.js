@@ -1,8 +1,6 @@
 import axios from "axios";
 import {FETCH_FILTRED_CARS, FETCH_PRODUCTS , BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR, BASKET_EDIT_ITEM, WHISHLIST_ADD_PRODUCT, WHISHLIST_REMOVE_PRODUCT, SELECTED_PRODUCT, SELECTED_CAR} from "./types";
 
-
-
 export const fetchProducts = (category) =>async dispatch =>{
   const res = await axios.get(`/api/products/:${category}`);
   dispatch({type: FETCH_PRODUCTS,payload :res.data});
