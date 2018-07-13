@@ -2,7 +2,13 @@
   "name": "back",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/api/admin/*": {
+      "target": "http://localhost:5000"
+    }
+  },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-runtime": "^6.26.0",
     "grommet": "^1.11.0",
     "grommet-css": "^1.6.0",

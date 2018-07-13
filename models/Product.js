@@ -5,6 +5,7 @@ const productSchema = new Schema({
     title: String,
     price: {type: Number, default: 0},
     oldPrice: Number,
+    rating: Number,
     briefDescription: String,
     brand: String,
     code: String,
@@ -14,32 +15,7 @@ const productSchema = new Schema({
     quantity: {type: Number, default: 1},
     description: String,
     photosPath: [String],
-    engine: {
-        numberOfCylindre: Number,
-        displacement: String,
-        engineLayout: String,
-        horesPower: Number,
-        rpm: String,
-        torque: String,
-        compressionRatio: String
-    },
-    performance: {
-        topSpeed: Number,
-        acceleration: Number
-    },
-    transmission: String,
-    consumption: {
-        city: Number,
-        highway: Number
-    },
-    body: {
-        length: Number,
-        width: Number,
-        height: Number,
-        wheelBase: Number,
-        maximumPayload: Number
-    },
-    _category: { type: Schema.Types.ObjectId, ref: 'Category' }
+    productCategory: { type: Schema.Types.ObjectId, ref: 'Category' }
 });
 
-mongoose.model('products', productSchema);
+mongoose.model('Product', productSchema);

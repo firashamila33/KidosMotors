@@ -12,6 +12,8 @@ import Heading from 'grommet/components/Heading'
 import Footer from 'grommet/components/Footer'
 import CloseIcon from 'grommet/components/icons/base/Close'
 import NavControl from '../NavControl'
+import {connect} from 'react-redux'
+import {submitProduct} from '../../actions'
 
 class AddProduct extends Component {
     handleRequestClose = () => {
@@ -19,13 +21,47 @@ class AddProduct extends Component {
     };
 
     handleSubmit = async (e) => {
-        console.log(this.state);
+        e.preventDefault();
+        const product = {
+            title: this.state.title,
+            price: this.state.price,
+            oldPrice: this.state.oldPrice,
+            briefDescription: this.state.briefDescription,
+            brand: this.state.brand,
+            code: this.state.code,
+            manufactor: this.state.manufactor,
+            color: this.state.color,
+            availability: this.state.availability,
+            description: this.state.description,
+            photosPath: this.state.photosPath,
+        };
+
+        const category = {
+            name: this.state.category
+        };
+
+        const values = {
+            product,
+            category
+        };
+        await this.props.submitProduct(values);
         this.props.history.push('/product');
     };
 
     handleInputChange = (field) => (e) => {
         this.setState({
             [field]: e.target.value
+        });
+    };
+
+    handleSuggestions = (e) => {
+        const {suggestions} = this.state;
+        if (e.target.value === '') {
+            this.setState({suggestionsShow: suggestions, category: e.target.value});
+        }
+        this.setState({
+            suggestionsShow: suggestions.filter(suggestion => suggestion.includes(e.target.value)),
+            category: e.target.value
         });
     };
 
@@ -38,7 +74,15 @@ class AddProduct extends Component {
             briefDescription: '',
             brand: '',
             code: '',
-            manufactor: ''
+            manufactor: '',
+            color: '',
+            availability: false,
+            quantity: 1,
+            description: '',
+            photosPath: [],
+            category: '',
+            suggestions: ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'],
+            suggestionsShow: []
         }
     }
 
@@ -53,7 +97,7 @@ class AddProduct extends Component {
                     </Header>
                     <FormFields>
                         <FormField label='Title'>
-                            <TextInput value={this.state.title} onDOMChange={this.handleInputChange('title')}/>
+                            <TextInput value={this.props.title ? this.props.title : this.state.title} onDOMChange={this.handleInputChange('title')}/>
                         </FormField>
                         <FormField label='Price'>
                             <NumberInput value={this.state.price} min={0}
@@ -78,6 +122,10 @@ class AddProduct extends Component {
                             <TextInput value={this.state.manufactor}
                                        onDOMChange={this.handleInputChange('manufactor')}/>
                         </FormField>
+                        <FormField label='Category'>
+                            <TextInput onDOMChange={this.handleSuggestions} value={this.state.category}
+                                       suggestions={this.state.suggestionsShow}/>
+                        </FormField>
                     </FormFields>
                     <Footer pad={{vertical: 'medium'}} align='center' direction='row' justify='between'>
                         <Button type='submit' primary={true} label='Save'/>
@@ -88,4 +136,4 @@ class AddProduct extends Component {
     }
 }
 
-export default AddProduct;
+export default connect(null, {submitProduct})(AddProduct);

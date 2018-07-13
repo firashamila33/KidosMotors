@@ -6,17 +6,41 @@ const carSchema = new Schema({
     price: Number,
     make: String,
     model: String,
-    body: String,
+    carBody: String,
     fuel: String,
-    engine: String,
-    transmission: String,
     color: String,
     door: {type: Number, default: 4},
     oldCar: {type: Boolean, default: false},
     mileage: Number,
     warranty: Number,
     description: String,
-    features: [String]
+    pathImages: [String],
+    features: [String],
+    engine: {
+        numberOfCylindre: Number,
+        displacement: String,
+        engineLayout: String,
+        horesPower: Number,
+        rpm: String,
+        torque: String,
+        compressionRatio: String
+    },
+    performance: {
+        topSpeed: Number,
+        acceleration: Number
+    },
+    transmission: String,
+    consumption: {
+        city: Number,
+        highway: Number
+    },
+    body: {
+        length: Number,
+        width: Number,
+        height: Number,
+        wheelBase: Number,
+        maximumPayload: Number
+    },
 });
 
 mongoose.model('cars', carSchema);
