@@ -1,4 +1,5 @@
 import axios from "axios";
+<<<<<<< HEAD
 import {
   FETCH_FILTRED_CARS,
   FETCH_PRODUCTS,
@@ -15,6 +16,11 @@ import {
 } from "./types";
 
 export const fetchProducts = category => async dispatch => {
+=======
+import {FETCH_FILTRED_CARS, FETCH_PRODUCTS , BASKET_ADD ,BASKET_REMOVE_ITEM  ,FETCH_CARS ,FETCH_SINGLE_CAR, BASKET_EDIT_ITEM, WHISHLIST_ADD_PRODUCT, WHISHLIST_REMOVE_PRODUCT, SELECTED_PRODUCT, SELECTED_CAR} from "./types";
+
+export const fetchProducts = (category) =>async dispatch =>{
+>>>>>>> 08f333d622087bccc035cb83e5aed226daa69edc
   const res = await axios.get(`/api/products/:${category}`);
   dispatch({ type: FETCH_PRODUCTS, payload: res.data });
 };

@@ -166,7 +166,7 @@ class SearchBarHome extends Component {
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenu6">
                               <li id="automatic" onClick={this.setCarTransition}>Automatic</li>
-                              <li id="manual" onClick={this.setCarTransition}>Manual</li>
+                              <li id="manual"  onClick={this.setCarTransition}>Manual</li>
                               <li id="semi_automatic" onClick={this.setCarTransition}>Semi-automatic</li>
                             </ul>
                           </div>
