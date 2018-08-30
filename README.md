@@ -2,7 +2,7 @@
 Preview here : https://boiling-thicket-12552.herokuapp.com
 
 KidosMotors is React and Node.js based eCommerce platform for selling new/old cars and car parts ,
-The project challenge is to extend my FrontEnd experience facing the latest trend technologies . 
+The project challenge is to extend our FrontEnd experience facing the latest trend technologies . 
 
 Built with:
 
