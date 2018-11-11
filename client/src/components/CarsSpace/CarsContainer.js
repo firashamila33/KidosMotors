@@ -130,8 +130,8 @@ class CarsContainer extends Component {
         }
         /**If I was in cars containers and I did not changed yet the slider in cars container then the slider should be as in filters */
         if (homefilterActivated && !buttonSearchClicked) {
-            var min = 1000 * priceRange.slice(1, priceRange.indexOf(","));
-            var max = 1000 * priceRange.slice(priceRange.indexOf("-") + 3, priceRange.indexOf(",", priceRange.indexOf("-")));
+             min = 1000 * priceRange.slice(1, priceRange.indexOf(","));
+             max = 1000 * priceRange.slice(priceRange.indexOf("-") + 3, priceRange.indexOf(",", priceRange.indexOf("-")));
             window.reRenderRangeSliderOther(min, max);
         }else if (!buttonSearchClicked){window.reRenderRangeSlider()}
 
